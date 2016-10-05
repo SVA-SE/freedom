@@ -2,5 +2,8 @@
 
 export(EffProbInf)
 export(adjusted_risk)
+export(hse)
+export(hse_finite)
+export(hse_infinite)
 export(sample_data)
 import(stats)

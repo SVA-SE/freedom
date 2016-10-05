@@ -18,7 +18,7 @@ A vector of EPI
 EffProbInf
 }
 \details{
-Calculate the effective probability of infectioun for each unsit
+Calculate the effective probability of infection (EPI) for each unsit
 risk group in the population. This could be either at the herd
 level or within herd level. The dp for herds is therefore the
 minimum prevlance among herds that you would like to design the
