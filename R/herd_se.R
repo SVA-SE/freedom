@@ -95,3 +95,27 @@ hse <- function(n_tested, N, test_Se, dp){
         return(result)
     }
 }
+##' Calculate the surveillance system sensitivity
+##'
+##' Takes a vector of the sensitivity of herds tested in the
+##' surveillance system and a vector of the effective probability of
+##' infection in the herds (EPIH) to calculate the total surveillance system
+##' sensitvity for the entire program.
+##' @title sysse
+##' @param dp The vector of EPIH for all herds tested in the surveillance system
+##' @param hse The calculated hse for all the herds tested in teh surveillance system
+##' @return A vector (length 1)
+##' @export
+##' @author Thomas Rosendal
+sysse <- function(dp, hse) {
+    if(length(hse) != length(dp)) {
+        stop("The herd Se vector (hse) must be the same length as the Effective probability of infection of the herd (dp)")
+    }
+    if(any(hse > 1)) {
+        stop("At least one of the hse values is greater than 1")
+    }
+    if(any(dp > 1)) {
+        stop("At least one effecitive probability of infection (dp) is greater than 1")
+    }
+    1 - prod(1 - dp * hse)
+}
