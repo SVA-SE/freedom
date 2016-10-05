@@ -35,7 +35,7 @@ adjusted_risk <- function(prop, RR) {
 }
 ##' EffProbInf
 ##' 
-##' Calculate the effective probability of infectioun for each unsit
+##' Calculate the effective probability of infection (EPI) for each unsit
 ##' risk group in the population. This could be either at the herd
 ##' level or within herd level. The dp for herds is therefore the
 ##' minimum prevlance among herds that you would like to design the
@@ -55,5 +55,8 @@ EffProbInf <- function(dp, AR) {
         stop("The design prevalence (dp) vector must be length 1")
     }
     epi <- dp * AR
+    if(any(epi >=1)){
+        warning("The EPI should not be greater than 1 for any URG.\nConsider your choices of design prevalance and the relative risks of the URG")
+    }
     return(epi)
 }
