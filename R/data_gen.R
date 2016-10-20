@@ -11,6 +11,7 @@
 ##' @param animal_dist The fraction of animals within herds that are part of each risk group
 ##' @param animal_samp_frac The total samplign fraction of animals within herds
 ##' @param animal_samp_dist The fraction of samples that are collected from each animal risk group
+##' @param seed The seed for the random number generator. Default is a random seed
 ##' @return A data.frame
 ##' @import stats
 ##' @export
@@ -24,7 +25,8 @@ sample_data <- function(nherds = 500,
                         n_animal_urg = 2,
                         animal_dist = c(0.5, 0.5),
                         animal_samp_frac = 0.15,
-                        animal_samp_dist = c(0.5, 0.5)) {
+                        animal_samp_dist = c(0.5, 0.5),
+                        seed = NULL) {
     if(length(herd_dist) != n_herd_urg) {
         stop("The length of the herd distribution vector must be equal to the number of herd unit risk groups")
     }
@@ -49,6 +51,11 @@ sample_data <- function(nherds = 500,
     if(sum(animal_samp_dist) != 1) {
         stop("The distribution of animal SAMPLES between the animal unit risk groups must sum to 1")
     }
+
+    if(!is.null(seed)) {
+        set.seed(seed)
+    }
+    
     ppn <- 1:nherds
     N <- rpois(nherds, mean_herd_size)
     n <- floor((rpois(nherds, animal_samp_frac*100)/100)*N)

@@ -7,7 +7,7 @@
 sample_data(nherds = 500, mean_herd_size = 50, n_herd_urg = 2,
   herd_dist = c(0.8, 0.2), herd_samp_frac = 0.5, herd_samp_dist = c(0.5,
   0.5), n_animal_urg = 2, animal_dist = c(0.5, 0.5),
-  animal_samp_frac = 0.15, animal_samp_dist = c(0.5, 0.5))
+  animal_samp_frac = 0.15, animal_samp_dist = c(0.5, 0.5), seed = NULL)
 }
 \arguments{
 \item{nherds}{The total number of herds}
@@ -29,6 +29,8 @@ sample_data(nherds = 500, mean_herd_size = 50, n_herd_urg = 2,
 \item{animal_samp_frac}{The total samplign fraction of animals within herds}
 
 \item{animal_samp_dist}{The fraction of samples that are collected from each animal risk group}
+
+\item{seed}{The seed for the random number generator. Default is a random seed}
 }
 \value{
 A data.frame
