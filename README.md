@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/SVA-SE/freedom.svg?branch=master)](https://travis-ci.org/SVA-SE/freedom)
+
 # freedom
 
 An R package to calculate probability of freedom from disease in a
