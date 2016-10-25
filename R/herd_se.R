@@ -29,7 +29,7 @@ hse_finite <- function(n_tested, N, test_Se, dp) {
         stop("One of the URG has more subunits tested than in the population")
     }
     if(length(n_tested) != length(dp)) {
-        stop("The length of the n_tested vector must be equal to the N vector.\nie. you must describe both the number fo animals tested in each group as well as how many animals are in each group.")
+        stop("The length of the n_tested vector must be equal to the dp vector.\nie. you must describe both the number fo animals tested in each group as well as the dp in each group.")
     }
     1 - prod((1 - (n_tested * test_Se / N)) ^ (dp * N))
 }
