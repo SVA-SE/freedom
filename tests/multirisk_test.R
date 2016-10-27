@@ -11,7 +11,7 @@ df <- sample_data(nherds = 100,
                  animal_samp_frac = 0.05,
                  animal_samp_dist = c(1),
                  seed = 1)
-write.csv2(df, file = "~/Desktop/data.csv")
+##write.csv2(df, file = "~/Desktop/data.csv")
 ##
 ## Now there are 2 herd level risk groups to use to calculate the HSe.
 ## The relative risk for Herd URG1 == 1 and URG2_relative_risk == 2.3
