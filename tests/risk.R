@@ -1,15 +1,13 @@
 library(freedom)
-
 ## Adjusted risks
-stopifnot(identical(round(adjusted_risk(c(0.1, 0.9), c(1,4)), 10), c(0.2777777778, 40)))
-
-## Effective propbabiltyi of infection
-stopifnot(identical(round(EffProbInf(dp = 0.01, adjusted_risk(c(0.1, 0.9), c(1,4))), 10), c(0.0027777778, 0.4)))
+stopifnot(identical(round(adjusted_risk(c(0.1, 0.9), c(1,4)), 10), c(0.2702702703, 1.0810810811)))
+## Effective propbabilty of infection
+stopifnot(identical(round(EffProbInf(dp = 0.01, adjusted_risk(c(0.1, 0.9), c(1,4))), 10), c(0.0027027027, 0.0108108108)))
 
 ## Herd Se
 temp <- EffProbInf(dp = 0.01, adjusted_risk(c(0.1, 0.9), c(1,4)))
-stopifnot(identical(round(hse(c(5,10), c(100, 110), 0.90, temp), 10), 0.9886141814))
-stopifnot(identical(round(hse(c(5,10), c(10, 15), 0.90, temp), 10), 0.9959714589))
+stopifnot(identical(round(hse(c(5,10), c(100, 110), 0.90, temp), 10), 0.1041217047))
+stopifnot(identical(round(hse(c(5,10), c(10, 15), 0.90, temp), 10), 0.1518904312))
 
 ## surveillance system Se
 

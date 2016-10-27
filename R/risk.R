@@ -28,7 +28,7 @@ adjusted_risk <- function(prop, RR) {
     }
     AR <- unlist(
         lapply(seq_len(length(prop)), function(x){
-            RR[x]/sum(RR[-x]*prop[-x])
+            RR[x]/sum(RR*prop)
         })
     )
     return(AR)
