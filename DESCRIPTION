@@ -12,3 +12,4 @@ LazyLoad: yes
 Depends: R (>= 3.1.0)
 RoxygenNote: 5.0.1
 Depends:
+
