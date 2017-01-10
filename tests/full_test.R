@@ -23,7 +23,7 @@ df <- sample_data(nherds = 50,
 ##
 ## ## Test the time it takes...
 ## ptm <- proc.time()
-## for(i in 1:1000){
+## for(i in 1:10000){
 hse <- hse_finite(df$ppn, df$n_animal_urg, df$N_animal_urg, 0.70, 0.15)
 df$hse <- hse$HSe[match(df$ppn, hse$id)]
 ## Then the system sensitivity
@@ -40,6 +40,6 @@ stopifnot(identical(round(prior_fr(post_pf, 0.05), 15), 0.696163691219548))
 ## proc.time()-ptm
 ##
 ## This takes:
-## > proc.time()-ptm                       
-##  user  system elapsed 
-##  0.600   0.004   1.158 
+## > proc.time()-ptm
+##    user  system elapsed 
+##   5.092   0.000   5.649 
