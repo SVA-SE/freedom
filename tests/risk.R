@@ -6,8 +6,8 @@ stopifnot(identical(round(EffProbInf(dp = 0.01, adjusted_risk(c(0.1, 0.9), c(1,4
 
 ## Herd Se
 temp <- EffProbInf(dp = 0.01, adjusted_risk(c(0.1, 0.9), c(1,4)))
-stopifnot(identical(round(hse(c(5,10), c(100, 110), 0.90, temp), 10), 0.1041217047))
-stopifnot(identical(round(hse(c(5,10), c(10, 15), 0.90, temp), 10), 0.1518904312))
+stopifnot(identical(round(hse_infinite(c(1, 1), c(5, 10), 0.9, temp)$HSe, 10), 0.1041217047))
+stopifnot(identical(round(  hse_finite(c(1, 1), c(5, 10), c(10, 15), 0.90, temp)$HSe, 10), 0.1518904312))
 
 ## surveillance system Se
 

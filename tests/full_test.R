@@ -21,19 +21,11 @@ df <- sample_data(nherds = 50,
 ##
 ## First the Herd sensitivity
 ##
-## Test the time it takes...
+## ## Test the time it takes...
 ## ptm <- proc.time()
 ## for(i in 1:1000){
-## df$hse <- do.call("c", lapply(df$ppn, function(x){
-##     freedom::hse(df$n_animal_urg[df$ppn == x],
-##                  df$N_animal_urg[df$ppn == x],
-##                  0.70, rep(0.15, nrow(df))[df$ppn == x])
-## }))
-df$hse <- do.call("c", lapply(df$ppn, function(x){
-    freedom::hse_finite(df$n_animal_urg[df$ppn == x],
-                 df$N_animal_urg[df$ppn == x],
-                 0.70, rep(0.15, nrow(df))[df$ppn == x])
-}))
+hse <- hse_finite(df$ppn, df$n_animal_urg, df$N_animal_urg, 0.70, 0.15)
+df$hse <- hse$HSe[match(df$ppn, hse$id)]
 ## Then the system sensitivity
 system_sens <- sysse(rep(0.02, nrow(df)), df$hse)
 ## Posterior probability of freedom.
@@ -43,12 +35,11 @@ system_sens <- sysse(rep(0.02, nrow(df)), df$hse)
 post_pf <- post_fr(0.5, system_sens)
 ## Prior probability at next year assuming an annual risk of
 ## introduction of 0.05%
-identical(round(prior_fr(post_pf, 0.05), 15), 0.696163691219548)
+stopifnot(identical(round(prior_fr(post_pf, 0.05), 15), 0.696163691219548))
 ## }
 ## proc.time()-ptm
-
-## The time is a little slow 4 seconds. I think that improving the
-## design of the Hse function to avoid appling the function over
-## indexes of the dataframe would be a significant improvement. This
-## could be done by reshaping the dataframe from long to wide. Then
-## submitting each vector to the function. 
+##
+## This takes:
+## > proc.time()-ptm                       
+##  user  system elapsed 
+##  0.600   0.004   1.158 

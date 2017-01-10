@@ -30,11 +30,8 @@ df$dp <- 0.15
 df$ephi <- EPHI[df$herd_urg]
 ## Then use this in the Herd sensitivity Calculation
 ##
-df$hse <- do.call("c", lapply(df$ppn, function(x){
-    freedom::hse_finite(df$n_animal_urg[df$ppn == x],
-                 df$N_animal_urg[df$ppn == x],
-                 0.70, df$dp[df$ppn == x])
-}))
+hse <- hse_finite(df$ppn, df$n_animal_urg, df$N_animal_urg, 0.7, df$dp)
+df$hse <- hse$HSe[match(df$ppn, hse$id)]
 ## Then the system sensitivity
 system_sens <- sysse(df$ephi, df$hse)
 ## Posterior probability of freedom.
@@ -44,4 +41,4 @@ system_sens <- sysse(df$ephi, df$hse)
 post_pf <- post_fr(0.5, system_sens)
 ## Prior probability at next year assuming an annual risk of
 ## introduction of 0.05%
-identical(round(prior_fr(post_pf, 0.05), 15), 0.629618446231256)
+stopifnot(identical(round(prior_fr(post_pf, 0.05), 15), 0.629618446231256))
