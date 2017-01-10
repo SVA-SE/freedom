@@ -37,6 +37,8 @@ hse_finite <- function(id, n_tested, N, test_Se, dp) {
     B <- dp * N
     df <- as.data.frame(1 - tapply(A ^ B, INDEX = id, FUN = "prod"))
     names(df) <- c("HSe")
+    df$id <- rownames(df)
+    df <- df[,c("id", "HSe")]
     return(df)
 }
 

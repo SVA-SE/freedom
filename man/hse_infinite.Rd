@@ -4,24 +4,23 @@
 \alias{hse_infinite}
 \title{hse_infinite}
 \usage{
-hse_infinite(n_tested, test_Se, dp)
+hse_infinite(id, n_tested, test_Se, dp)
 }
 \arguments{
+\item{id}{The herdid}
+
 \item{n_tested}{The number tested in each URG}
 
-\item{test_Se}{The sensitivity of the test (length = 1). If you
-have reason to believe that the test sensitivity is different
-for different URG. Then supply a vector of Sensitivities. This
-could conceivably be because of using different tests for
-different samples from different URG.}
+\item{test_Se}{The sensitivity of the test. This may have length
+== 1 if all URG and all herds have the same test_Se. It may
+also have length(test_Se) == length(n_tested).}
 
-\item{dp}{The is a vector (length 1) of the the design prevalance
-(df) in the case where there is only one unit risk group (URG)
-in the herd. Or a vector (length n) of EPIn for each of the
-URG in the herd.}
+\item{dp}{The design prevalance (dp) could be length(dp) == 1 if
+all URG and herds have the same dp. It could alternatively be
+length(dp) == length(n_tested) if diff}
 }
 \value{
-A vector (length 1)
+A data.frame. A dataframe is returned with 2 columns: "id" and HSe
 }
 \description{
 Herd Sensitivity calculated with the assumption of an infinite population
