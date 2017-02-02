@@ -51,8 +51,8 @@ adjusted_risk <- function(prop, RR) {
 ##' @export
 ##' @author Thomas Rosendal
 EffProbInf <- function(dp, AR) {
-    if(length(dp) != 1) {
-        stop("The design prevalence (dp) vector must be length 1")
+    if(!(length(dp) == 1 | length(dp) == length(AR))) {
+        stop("The design prevalence (dp) vector must be length 1 or be equal in length to the AR vector")
     }
     epi <- dp * AR
     if(any(epi >=1)){

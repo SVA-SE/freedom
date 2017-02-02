@@ -9,7 +9,7 @@ sysse(dp, hse)
 \arguments{
 \item{dp}{The vector of EPIH for all herds tested in the surveillance system}
 
-\item{hse}{The calculated hse for all the herds tested in teh surveillance system}
+\item{hse}{The calculated hse for all the herds tested in the surveillance system}
 }
 \value{
 A vector (length 1)
