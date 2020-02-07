@@ -30,4 +30,3 @@ system to detect.
 \author{
 Thomas Rosendal
 }
-

@@ -1,5 +1,5 @@
 library(freedom)
-## 50 herds, 
+## 50 herds,
 df <- sample_data(nherds = 50,
                  mean_herd_size = 500,
                  n_herd_urg = 1,
@@ -22,8 +22,8 @@ df <- sample_data(nherds = 50,
 ## First the Herd sensitivity
 ##
 ## ## Test the time it takes...
-## ptm <- proc.time()
-## for(i in 1:10000){
+ptm <- proc.time()
+for(i in 1:10000){
 hse <- hse_finite(df$ppn, df$n_animal_urg, df$N_animal_urg, 0.70, 0.15)
 df$hse <- hse$HSe[match(df$ppn, hse$id)]
 ## Then the system sensitivity
@@ -36,10 +36,14 @@ post_pf <- post_fr(0.5, system_sens)
 ## Prior probability at next year assuming an annual risk of
 ## introduction of 0.05%
 stopifnot(identical(round(prior_fr(post_pf, 0.05), 15), 0.696163691219548))
-## }
-## proc.time()-ptm
+}
+proc.time()-ptm
 ##
 ## This takes:
 ## > proc.time()-ptm
-##    user  system elapsed 
-##   5.092   0.000   5.649 
+##    user  system elapsed
+##   5.092   0.000   5.649
+## In Feb 2020 it takes:
+## > proc.time()-ptm
+##    user  system elapsed
+##   2.618   0.000   3.008

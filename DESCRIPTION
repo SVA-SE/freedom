@@ -6,10 +6,8 @@ Author: Thomas Rosendal
 Maintainer: Thomas Rosendal <thomas.rosendal@sva.se>
 Description: The package will perform freedom from disease
     calculations on surveillance data.
-License: GPL-3 + file LICENSE
+License: GPL-3
 Type: Package
 LazyLoad: yes
 Depends: R (>= 3.1.0)
-RoxygenNote: 5.0.1
-Depends:
-
+RoxygenNote: 7.0.2

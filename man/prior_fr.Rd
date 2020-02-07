@@ -27,4 +27,3 @@ is introduced into the population.
 \author{
 Thomas Rosendal
 }
-

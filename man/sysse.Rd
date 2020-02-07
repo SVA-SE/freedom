@@ -26,4 +26,3 @@ sensitvity for the entire program.
 \author{
 Thomas Rosendal
 }
-

@@ -30,4 +30,3 @@ introduction) as the prior probability in this calculation.
 \author{
 Thomas Rosendal
 }
-

@@ -38,4 +38,3 @@ when greater than 10% of the population has been sampled
 \author{
 Thomas Rosendal
 }
-

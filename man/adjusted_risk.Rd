@@ -31,4 +31,3 @@ of animals within a given herd that are in each URG.
 \author{
 Thomas Rosendal
 }
-

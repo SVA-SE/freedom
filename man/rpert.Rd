@@ -29,4 +29,3 @@ Returns samples from a pert distribution
 \author{
 Thomas Rosendal
 }
-

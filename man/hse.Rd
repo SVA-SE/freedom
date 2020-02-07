@@ -37,4 +37,3 @@ otherwise the assumption of infinite population.
 \author{
 Thomas Rosendal
 }
-

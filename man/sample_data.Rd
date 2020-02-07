@@ -4,10 +4,19 @@
 \alias{sample_data}
 \title{sample_data}
 \usage{
-sample_data(nherds = 500, mean_herd_size = 50, n_herd_urg = 2,
-  herd_dist = c(0.8, 0.2), herd_samp_frac = 0.5, herd_samp_dist = c(0.5,
-  0.5), n_animal_urg = 2, animal_dist = c(0.5, 0.5),
-  animal_samp_frac = 0.15, animal_samp_dist = c(0.5, 0.5), seed = NULL)
+sample_data(
+  nherds = 500,
+  mean_herd_size = 50,
+  n_herd_urg = 2,
+  herd_dist = c(0.8, 0.2),
+  herd_samp_frac = 0.5,
+  herd_samp_dist = c(0.5, 0.5),
+  n_animal_urg = 2,
+  animal_dist = c(0.5, 0.5),
+  animal_samp_frac = 0.15,
+  animal_samp_dist = c(0.5, 0.5),
+  seed = NULL
+)
 }
 \arguments{
 \item{nherds}{The total number of herds}
@@ -41,4 +50,3 @@ A function to generate some synthetic data based on a few parameters
 \author{
 Thomas Rosendal
 }
-

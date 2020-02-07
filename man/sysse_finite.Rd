@@ -31,4 +31,3 @@ the the total number of herds in the population.
 \author{
 Thomas Rosendal
 }
-
