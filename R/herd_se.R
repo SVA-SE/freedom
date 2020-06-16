@@ -159,6 +159,7 @@ hse <- function(id,
                              N[index_finite],
                              test_Se,
                              dp)
+        finite$method <- "finite"
     }
     if(all(index_finite)) {
         return(finite)
@@ -175,12 +176,15 @@ hse <- function(id,
         dp_infinite <- dp[index_infinite]
     }
 
+    infinite <- hse_infinite(id[index_infinite],
+                             n_tested[index_infinite],
+                             test_Se_infinite,
+                             dp_infinite)
+    infinite$method <- "infinite"
+
     ## return the complete dataset
     rbind(finite,
-          hse_infinite(id[index_infinite],
-                       n_tested[index_infinite],
-                       test_Se_infinite,
-                       dp_infinite))
+          infinite)
 }
 
 ##' Calculate the surveillance system sensitivity
