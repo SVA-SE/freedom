@@ -20,7 +20,11 @@
 ##' @return A data.frame. A dataframe is returned with 2 columns: "id" and HSe
 ##' @export
 ##' @author Thomas Rosendal
-hse_finite <- function(id, n_tested, N, test_Se, dp) {
+hse_finite <- function(id,
+                       n_tested,
+                       N,
+                       test_Se,
+                       dp) {
     if(length(n_tested) != length(N)) {
         stop(paste("The length of the n_tested vector must be equal to the N vector.",
                    "ie. you must describe both the number of animals tested in each",
@@ -67,7 +71,10 @@ hse_finite <- function(id, n_tested, N, test_Se, dp) {
 ##' @return A data.frame. A dataframe is returned with 2 columns: "id" and HSe
 ##' @export
 ##' @author Thomas Rosendal
-hse_infinite <- function(id, n_tested, test_Se, dp){
+hse_infinite <- function(id,
+                         n_tested,
+                         test_Se,
+                         dp){
     if(!(length(n_tested) == length(dp) | length(dp) == 1)) {
         stop(paste("The length of the n_tested vector must be equal to the dp vector.",
                    "ie. you must describe both the number fo animals tested in each",
@@ -92,6 +99,7 @@ hse_infinite <- function(id, n_tested, test_Se, dp){
 ##' otherwise the assumption of infinite population.
 ##'
 ##' @title hse
+##' @param id The herdid
 ##' @param n_tested The number tested in each URG
 ##' @param N The number of units in each of the URG
 ##' @param test_Se The sensitivity of the test (length = 1). If you
@@ -109,16 +117,21 @@ hse_infinite <- function(id, n_tested, test_Se, dp){
 ##' @return A vector (length 1)
 ##' @export
 ##' @author Thomas Rosendal
-hse <- function(n_tested, N, test_Se, dp, force = FALSE){
+hse <- function(id,
+                n_tested,
+                N,
+                test_Se,
+                dp,
+                force = FALSE){
     ratio <- sum(n_tested)/sum(N)
     if(ratio > 1 & !force) {
         stop("Greater than 100% of animals cannot be tested")
     }
     if(ratio > 0.1 & ratio < 1) {
-        result <- hse_finite(n_tested, N, test_Se, dp)
+        result <- hse_finite(id, n_tested, N, test_Se, dp)
         return(result)
     }
-    hse_infinite(n_tested, test_Se, dp)
+    hse_infinite(id, n_tested, test_Se, dp)
 }
 
 ##' Calculate the surveillance system sensitivity

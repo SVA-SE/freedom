@@ -4,9 +4,11 @@
 \alias{hse}
 \title{hse}
 \usage{
-hse(n_tested, N, test_Se, dp, force = FALSE)
+hse(id, n_tested, N, test_Se, dp, force = FALSE)
 }
 \arguments{
+\item{id}{The herdid}
+
 \item{n_tested}{The number tested in each URG}
 
 \item{N}{The number of units in each of the URG}
