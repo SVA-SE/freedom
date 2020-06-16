@@ -4,7 +4,7 @@
 \alias{hse}
 \title{hse}
 \usage{
-hse(n_tested, N, test_Se, dp)
+hse(n_tested, N, test_Se, dp, force = FALSE)
 }
 \arguments{
 \item{n_tested}{The number tested in each URG}
@@ -21,6 +21,10 @@ different samples from different URG.}
 (df) in the case where there is only one unit risk group (URG)
 in the herd. Or a vector (length n) of EPIn for each of the
 URG in the herd.}
+
+\item{force}{If force = FALSE (default) then the function errors
+if n>N. If force = TRUE then this is allowed and uses the
+hse_infinite to calculate HSe.}
 }
 \value{
 A vector (length 1)

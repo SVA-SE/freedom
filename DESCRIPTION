@@ -10,4 +10,4 @@ License: GPL-3
 Type: Package
 LazyLoad: yes
 Depends: R (>= 3.1.0)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
