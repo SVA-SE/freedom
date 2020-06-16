@@ -111,6 +111,11 @@ hse_infinite <- function(id,
 ##'     (df) in the case where there is only one unit risk group (URG)
 ##'     in the herd. Or a vector (length n) of EPIn for each of the
 ##'     URG in the herd.
+##' @param threshhold The breakpoint above which the finite population
+##'     size calculation will be used. The default is 0.1 which means
+##'     that if > 10% of animals are tested in a herd the finite
+##'     popualation will be assumed; less than or equal to 10%, the
+##'     infinite population will be assumed.
 ##' @param force If force = FALSE (default) then the function errors
 ##'     if n>N. If force = TRUE then this is allowed and uses the
 ##'     hse_infinite to calculate HSe.
@@ -122,16 +127,60 @@ hse <- function(id,
                 N,
                 test_Se,
                 dp,
+                threshold = 0.1,
                 force = FALSE){
-    ratio <- sum(n_tested)/sum(N)
-    if(ratio > 1 & !force) {
-        stop("Greater than 100% of animals cannot be tested")
+    ## Ratio of animals tested in the herds
+    ratio <- n_tested / N
+
+    ## Check if this is more than expected
+    if(any(ratio > 1) & !force) {
+        problem <- id[ratio > 1]
+        stop(paste("Greater than 100% of animals cannot be tested.",
+                   "This occurs in the following ids:",
+                   problem,
+                   "To ignore this an default to infinite population",
+                   "for these herds, set force = TRUE", sep = "\n"))
     }
-    if(ratio > 0.1 & ratio < 1) {
-        result <- hse_finite(id, n_tested, N, test_Se, dp)
-        return(result)
+
+    ## Use the finite calcualtion for those with more than the threshhold
+    finite <- NULL
+    index_finite <- (ratio > threshold) & (ratio < 1)
+    test_Se_finite <- test_Se
+    if(length(test_Se) > 1) {
+        test_Se_finite <- test_Se[index_finite]
     }
-    hse_infinite(id, n_tested, test_Se, dp)
+    dp_finite <- dp
+    if(length(dp) > 1) {
+        dp_finite <- dp[index_finite]
+    }
+    if(any(index_finite)) {
+        finite <- hse_finite(id[index_finite],
+                             n_tested[index_finite],
+                             N[index_finite],
+                             test_Se,
+                             dp)
+    }
+    if(all(index_finite)) {
+        return(finite)
+    }
+
+    ## Otherwise use the infinite
+    index_infinite <- !index_finite
+    test_Se_infinite <- test_Se
+    if(length(test_Se) > 1) {
+        test_Se_infinite <- test_Se[index_infinite]
+    }
+    dp_infinite <- dp
+    if(length(dp) > 1) {
+        dp_infinite <- dp[index_infinite]
+    }
+
+    ## return the complete dataset
+    rbind(finite,
+          hse_infinite(id[index_infinite],
+                       n_tested[index_infinite],
+                       test_Se_infinite,
+                       dp_infinite))
 }
 
 ##' Calculate the surveillance system sensitivity
