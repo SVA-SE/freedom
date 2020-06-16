@@ -137,7 +137,7 @@ hse <- function(id,
         problem <- id[ratio > 1]
         stop(paste("Greater than 100% of animals cannot be tested.",
                    "This occurs in the following ids:",
-                   problem,
+                   paste(problem, collapse = ", "),
                    "To ignore this an default to infinite population",
                    "for these herds, set force = TRUE", sep = "\n"))
     }

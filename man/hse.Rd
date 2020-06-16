@@ -4,7 +4,7 @@
 \alias{hse}
 \title{hse}
 \usage{
-hse(id, n_tested, N, test_Se, dp, force = FALSE)
+hse(id, n_tested, N, test_Se, dp, threshold = 0.1, force = FALSE)
 }
 \arguments{
 \item{id}{The herdid}
@@ -27,6 +27,12 @@ URG in the herd.}
 \item{force}{If force = FALSE (default) then the function errors
 if n>N. If force = TRUE then this is allowed and uses the
 hse_infinite to calculate HSe.}
+
+\item{threshhold}{The breakpoint above which the finite population
+size calculation will be used. The default is 0.1 which means
+that if > 10% of animals are tested in a herd the finite
+popualation will be assumed; less than or equal to 10%, the
+infinite population will be assumed.}
 }
 \value{
 A vector (length 1)
