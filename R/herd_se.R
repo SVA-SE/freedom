@@ -157,8 +157,8 @@ hse <- function(id,
         finite <- hse_finite(id[index_finite],
                              n_tested[index_finite],
                              N[index_finite],
-                             test_Se,
-                             dp)
+                             test_Se_finite,
+                             dp_finite)
         finite$method <- "finite"
     }
     if(all(index_finite)) {
