@@ -24,15 +24,15 @@ different samples from different URG.}
 in the herd. Or a vector (length n) of EPIn for each of the
 URG in the herd.}
 
-\item{force}{If force = FALSE (default) then the function errors
-if n>N. If force = TRUE then this is allowed and uses the
-hse_infinite to calculate HSe.}
-
-\item{threshhold}{The breakpoint above which the finite population
+\item{threshold}{The breakpoint above which the finite population
 size calculation will be used. The default is 0.1 which means
 that if > 10% of animals are tested in a herd the finite
 popualation will be assumed; less than or equal to 10%, the
 infinite population will be assumed.}
+
+\item{force}{If force = FALSE (default) then the function errors
+if n>N. If force = TRUE then this is allowed and uses the
+hse_infinite to calculate HSe.}
 }
 \value{
 A vector (length 1)

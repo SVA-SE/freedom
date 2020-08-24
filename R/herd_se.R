@@ -126,7 +126,7 @@ hse_infinite <- function(id,
 ##'     (df) in the case where there is only one unit risk group (URG)
 ##'     in the herd. Or a vector (length n) of EPIn for each of the
 ##'     URG in the herd.
-##' @param threshhold The breakpoint above which the finite population
+##' @param threshold The breakpoint above which the finite population
 ##'     size calculation will be used. The default is 0.1 which means
 ##'     that if > 10% of animals are tested in a herd the finite
 ##'     popualation will be assumed; less than or equal to 10%, the
