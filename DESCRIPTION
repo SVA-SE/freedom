@@ -1,16 +1,16 @@
 Package: freedom
-Title: Demonstation of Disease Freedom (DDF)
-Version: 0.1
+Title: Demonstration of Disease Freedom (DDF)
+Version: 0.2
 Date: 2020-08-24
 Author: Thomas Rosendal
 Maintainer: Thomas Rosendal <trosendal@gmail.com>
-Description: Yet another package that implements the folmulae required
-    to calculate freedom from disease according to Cameron and Baldok.
-    calculations on surveillance data. This are the methods used at
-    the Swedish national veterinary institute for our nation disease
-    surveillance programmes.
+Description: Yet another R-package that implements the formulae required
+    to calculate freedom from disease according to Cameron and Baldock
+    (1998).  calculations on surveillance data. This are the
+    methods used at the Swedish national veterinary institute for our
+    nation disease surveillance programmes.
 License: GPL-3
 Type: Package
 LazyLoad: yes
-Depends: R (>= 3.1.0)
+Depends: R (>= 4.0.2)
 RoxygenNote: 7.1.1
