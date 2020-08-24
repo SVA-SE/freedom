@@ -12,5 +12,5 @@ Description: Yet another R-package that implements the formulae required
 License: GPL-3
 Type: Package
 LazyLoad: yes
-Depends: R (>= 4.0.2)
+Depends: R (>= 4.0.0)
 RoxygenNote: 7.1.1
