@@ -28,10 +28,3 @@ Paratuberculosis). This first step will fulfil the requirements to
 report these results. The tool may be adaptable for other
 calculations, but at this point, absolute adaptability is not the main
 focus.
-
-## Sample data
-
-A few fake datasets are included in the package in order to build the
-tools. Their structure is similar to those that will be used for the
-actual calculations but their contents are simulated, so don't draw
-conclusions from their content.
