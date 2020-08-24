@@ -1,4 +1,5 @@
-##' Herd Sensitivity calculated with the assumption of a finite population
+##' Herd Sensitivity calculated with the assumption of a finite
+##' population
 ##'
 ##' Calculate the Herd sensitivity when multiple samples from
 ##' individual units within the herd. The function uses the total
@@ -19,39 +20,48 @@
 ##'     are to be applied to each URG.
 ##' @return A data.frame. A dataframe is returned with 2 columns: "id" and HSe
 ##' @export
-##' @author Thomas Rosendal
 hse_finite <- function(id,
                        n_tested,
                        N,
                        test_Se,
                        dp) {
-    if(length(n_tested) != length(N)) {
+
+    if (length(n_tested) != length(N)) {
         stop(paste("The length of the n_tested vector must be equal to the N vector.",
                    "ie. you must describe both the number of animals tested in each",
                    "group as well as how many animals are in each group.",
                    sep = "\n"))
     }
-    if(any(n_tested > N)) {
+
+    if (any(n_tested > N)) {
         stop("One of the URG has more subunits tested than in the population")
     }
-    if(!(length(dp) == 1 | length(n_tested) == length(dp))) {
+
+    if (!(length(dp) == 1 | length(n_tested) == length(dp))) {
         stop(paste("The length of the n_tested vector must be equal to the dp vector.",
                    "ie. you must describe both the number of animals tested in each",
                    "group as well as the dp in each group.", sep = "\n"))
     }
+
     if(!(length(test_Se) == 1 | length(test_Se) == length(n_tested))) {
         stop("The length of test_Se must be either 1 or the length of n_tested")
     }
+
     A <- 1 - (n_tested * test_Se / N)
+
     B <- dp * N
+
     df <- as.data.frame(1 - tapply(A ^ B, INDEX = id, FUN = "prod"))
+
     names(df) <- c("HSe")
+
     df$id <- rownames(df)
-    df <- df[,c("id", "HSe")]
-    return(df)
+
+    df[,c("id", "HSe")]
 }
 
-##' Herd Sensitivity calculated with the assumption of an infinite population
+##' Herd Sensitivity calculated with the assumption of an infinite
+##' population
 ##'
 ##' Calculate the Herd sensitivity when multiple samples from
 ##' individual units within the herd. The function does not use the
@@ -70,25 +80,30 @@ hse_finite <- function(id,
 ##'     length(dp) == length(n_tested) if diff
 ##' @return A data.frame. A dataframe is returned with 2 columns: "id" and HSe
 ##' @export
-##' @author Thomas Rosendal
 hse_infinite <- function(id,
                          n_tested,
                          test_Se,
-                         dp){
-    if(!(length(n_tested) == length(dp) | length(dp) == 1)) {
+                         dp) {
+
+    if (!(length(n_tested) == length(dp) | length(dp) == 1)) {
         stop(paste("The length of the n_tested vector must be equal to the dp vector.",
                    "ie. you must describe both the number fo animals tested in each",
                    "group as well as the dp in each group."), sep = "\n")
     }
-    if(!(length(n_tested) == length(test_Se) | length(test_Se) == 1)) {
+
+    if (!(length(n_tested) == length(test_Se) | length(test_Se) == 1)) {
         stop("Length of test_Se must be 1 or the length of n_tested")
     }
+
     A <- 1 - (dp * test_Se)
+
     df <- as.data.frame(1 - tapply(A ^ n_tested, INDEX = id, FUN = "prod"))
+
     names(df) <- c("HSe")
+
     df$id <- rownames(df)
-    df <- df[,c("id", "HSe")]
-    return(df)
+
+    df[,c("id", "HSe")]
 }
 
 ##' Herd Sensitivity
@@ -121,19 +136,19 @@ hse_infinite <- function(id,
 ##'     hse_infinite to calculate HSe.
 ##' @return A vector (length 1)
 ##' @export
-##' @author Thomas Rosendal
 hse <- function(id,
                 n_tested,
                 N,
                 test_Se,
                 dp,
                 threshold = 0.1,
-                force = FALSE){
+                force = FALSE) {
+
     ## Ratio of animals tested in the herds
     ratio <- n_tested / N
 
     ## Check if this is more than expected
-    if(any(ratio > 1) & !force) {
+    if (any(ratio > 1) & !force) {
         problem <- id[ratio > 1]
         stop(paste("Greater than 100% of animals cannot be tested.",
                    "This occurs in the following ids:",
@@ -146,14 +161,14 @@ hse <- function(id,
     finite <- NULL
     index_finite <- (ratio > threshold) & (ratio < 1)
     test_Se_finite <- test_Se
-    if(length(test_Se) > 1) {
+    if (length(test_Se) > 1) {
         test_Se_finite <- test_Se[index_finite]
     }
     dp_finite <- dp
-    if(length(dp) > 1) {
+    if (length(dp) > 1) {
         dp_finite <- dp[index_finite]
     }
-    if(any(index_finite)) {
+    if (any(index_finite)) {
         finite <- hse_finite(id[index_finite],
                              n_tested[index_finite],
                              N[index_finite],
@@ -168,11 +183,11 @@ hse <- function(id,
     ## Otherwise use the infinite
     index_infinite <- !index_finite
     test_Se_infinite <- test_Se
-    if(length(test_Se) > 1) {
+    if (length(test_Se) > 1) {
         test_Se_infinite <- test_Se[index_infinite]
     }
     dp_infinite <- dp
-    if(length(dp) > 1) {
+    if (length(dp) > 1) {
         dp_infinite <- dp[index_infinite]
     }
 
@@ -198,23 +213,24 @@ hse <- function(id,
 ##' @param hse The calculated hse for all the herds tested in the surveillance system
 ##' @return A vector (length 1)
 ##' @export
-##' @author Thomas Rosendal
 sysse <- function(dp, hse) {
-    if(length(hse) != length(dp)) {
+
+    if (length(hse) != length(dp)) {
         stop(paste("The herd Se vector (hse) must be the same length",
                    "as the Effective probability of infection of the herd (dp)",
                    sep = "\n"))
     }
-    if(any(hse > 1)) {
+    if (any(hse > 1)) {
         stop("At least one of the hse values is greater than 1")
     }
-    if(any(dp > 1)) {
+    if (any(dp > 1)) {
         stop("At least one effecitive probability of infection (dp) is greater than 1")
     }
     1 - prod(1 - dp * hse)
 }
 
-##' Calculate the surveillance system sensitivity for a finite population of herds
+##' Calculate the surveillance system sensitivity for a finite
+##' population of herds
 ##'
 ##' Takes a vector of the sensitivity of herds tested in the
 ##' surveillance system and a vector of the effective probability of
@@ -229,17 +245,17 @@ sysse <- function(dp, hse) {
 ##' @param N The total number of herds in the population.
 ##' @return A vector (length 1)
 ##' @export
-##' @author Thomas Rosendal
 sysse_finite <- function(dp, hse, N) {
-    if(length(hse) != length(dp)) {
+
+    if (length(hse) != length(dp)) {
         stop(paste("The herd Se vector (hse) must be the same length",
              "as the Effective probability of infection of the herd (dp)",
              sep = "\n"))
     }
-    if(any(hse > 1)) {
+    if (any(hse > 1)) {
         stop("At least one of the hse values is greater than 1")
     }
-    if(any(dp > 1)) {
+    if (any(dp > 1)) {
         stop("At least one effecitive probability of infection (dp) is greater than 1")
     }
     1 - prod((1 - hse / N) ^ (dp * N))
