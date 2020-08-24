@@ -28,6 +28,3 @@ herds in the population that are in each of the unit risk
 groups. The proportion vector for animal level is the proportion
 of animals within a given herd that are in each URG.
 }
-\author{
-Thomas Rosendal
-}

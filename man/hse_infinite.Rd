@@ -23,7 +23,8 @@ length(dp) == length(n_tested) if diff}
 A data.frame. A dataframe is returned with 2 columns: "id" and HSe
 }
 \description{
-Herd Sensitivity calculated with the assumption of an infinite population
+Herd Sensitivity calculated with the assumption of an infinite
+population
 }
 \details{
 Calculate the Herd sensitivity when multiple samples from
@@ -31,7 +32,4 @@ individual units within the herd. The function does not use the
 population size to adjust the estimate. This is consistent with
 the assumption of an infinite population size and is generally
 used when less than 10% of the population has been sampled.
-}
-\author{
-Thomas Rosendal
 }

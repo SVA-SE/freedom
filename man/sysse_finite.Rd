@@ -19,7 +19,8 @@ surveillance system.}
 A vector (length 1)
 }
 \description{
-Calculate the surveillance system sensitivity for a finite population of herds
+Calculate the surveillance system sensitivity for a finite
+population of herds
 }
 \details{
 Takes a vector of the sensitivity of herds tested in the
@@ -27,7 +28,4 @@ surveillance system and a vector of the effective probability of
 infection in the herds (EPIH) to calculate the total surveillance
 system sensitivity for the entire program. This is adjusted for
 the the total number of herds in the population.
-}
-\author{
-Thomas Rosendal
 }

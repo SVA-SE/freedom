@@ -23,6 +23,3 @@ surveillance system and a vector of the effective probability of
 infection in the herds (EPIH) to calculate the total surveillance system
 sensitvity for the entire program.
 }
-\author{
-Thomas Rosendal
-}

@@ -27,26 +27,30 @@ sample_data(
 
 \item{herd_dist}{The fraction of herds in each risk group}
 
-\item{herd_samp_frac}{The total sampling fraction at the herd level}
+\item{herd_samp_frac}{The total sampling fraction at the herd
+level}
 
-\item{herd_samp_dist}{The fraction of samples to be collected from each herd risk group}
+\item{herd_samp_dist}{The fraction of samples to be collected from
+each herd risk group}
 
 \item{n_animal_urg}{The number of animal level risk groups}
 
-\item{animal_dist}{The fraction of animals within herds that are part of each risk group}
+\item{animal_dist}{The fraction of animals within herds that are
+part of each risk group}
 
-\item{animal_samp_frac}{The total samplign fraction of animals within herds}
+\item{animal_samp_frac}{The total samplign fraction of animals
+within herds}
 
-\item{animal_samp_dist}{The fraction of samples that are collected from each animal risk group}
+\item{animal_samp_dist}{The fraction of samples that are collected
+from each animal risk group}
 
-\item{seed}{The seed for the random number generator. Default is a random seed}
+\item{seed}{The seed for the random number generator. Default is a
+random seed}
 }
 \value{
 A data.frame
 }
 \description{
-A function to generate some synthetic data based on a few parameters
-}
-\author{
-Thomas Rosendal
+A function to generate some synthetic data based on a few
+parameters.
 }

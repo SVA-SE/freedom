@@ -26,7 +26,8 @@ are to be applied to each URG.}
 A data.frame. A dataframe is returned with 2 columns: "id" and HSe
 }
 \description{
-Herd Sensitivity calculated with the assumption of a finite population
+Herd Sensitivity calculated with the assumption of a finite
+population
 }
 \details{
 Calculate the Herd sensitivity when multiple samples from
@@ -34,7 +35,4 @@ individual units within the herd. The function uses the total
 population size to adjust the estimates consistent with a finite
 population. This method for calculation of HSe is typically used
 when greater than 10% of the population has been sampled
-}
-\author{
-Thomas Rosendal
 }

@@ -46,6 +46,3 @@ individual units within the herd. The function uses the assumption
 of finite population when greater than 10% of units are tested and
 otherwise the assumption of infinite population.
 }
-\author{
-Thomas Rosendal
-}

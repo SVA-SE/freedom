@@ -157,7 +157,7 @@ hse <- function(id,
                    "for these herds, set force = TRUE", sep = "\n"))
     }
 
-    ## Use the finite calcualtion for those with more than the threshhold
+    ## Use the finite calculation for those with more than the threshhold
     finite <- NULL
     index_finite <- (ratio > threshold) & (ratio < 1)
     test_Se_finite <- test_Se

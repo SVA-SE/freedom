@@ -26,6 +26,3 @@ Sample a pert distribution
 \details{
 Returns samples from a pert distribution
 }
-\author{
-Thomas Rosendal
-}
