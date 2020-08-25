@@ -52,7 +52,6 @@ adjusted_risk <- function(prop, RR) {
 ##' @param AR A vector of the adjusted risks of the unit risk groups
 ##' @return A vector of EPI
 ##' @export
-##' @author Thomas Rosendal
 EffProbInf <- function(dp, AR) {
 
     if (!(length(dp) == 1 | length(dp) == length(AR))) {

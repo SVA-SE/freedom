@@ -12,17 +12,17 @@
 ##' @title post_fr
 ##' @param prior_fr The prior probability of freedom
 ##' @param Se The sensitivity of the surveillance system
-##' @return A vector (length 1)
+##' @return A vector
 ##' @export
 ##' @author Thomas Rosendal
 post_fr <- function(prior_fr, Se){
 
-    if (prior_fr > 1) {
-        stop("The prior probability of freedom cannot be greater than 1")
+    if (any(prior_fr > 1 | prior_fr < 0)) {
+        stop("The prior probability of freedom cannot be greater than 1 or less than 0")
     }
 
-    if (Se > 1) {
-        stop("System sensitivity cannot be greater than 1")
+    if (any(Se > 1 | Se < 0)) {
+        stop("System sensitivity cannot be greater than 1 or less than 0")
     }
 
     prior_fr / (1 - ((1 - prior_fr) * Se))
@@ -39,16 +39,16 @@ post_fr <- function(prior_fr, Se){
 ##' @title prior_fr
 ##' @param post_fr The posterior probability of freedom (year = k-1)
 ##' @param intro The annual probability of introduction
-##' @return A vector (length = 1) The prior probability of freedom (year = k)
+##' @return A vector. The prior probability of freedom (year = k)
 ##' @export
 ##' @author Thomas Rosendal
 prior_fr <- function(post_fr, intro){
-    if (post_fr > 1) {
-        stop("The posterior probability of freedom cannot be greater than 1")
+    if (any(post_fr > 1 | post_fr < 0)) {
+        stop("The posterior probability of freedom cannot be greater than 1 or less than 0")
     }
 
-    if (intro > 1) {
-        stop("The annual probability of introduction cannot be greater than 1")
+    if (any(intro > 1 | intro < 0)) {
+        stop("The annual probability of introduction cannot be greater than 1 or less than 0")
     }
 
     post_fr - (post_fr * intro)

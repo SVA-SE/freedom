@@ -220,11 +220,12 @@ sysse <- function(dp, hse) {
                    "as the Effective probability of infection of the herd (dp)",
                    sep = "\n"))
     }
-    if (any(hse > 1)) {
-        stop("At least one of the hse values is greater than 1")
+    if (any(hse > 1 | hse < 0)) {
+        stop("At least one of the hse values is greater than 1 or less than 0")
     }
-    if (any(dp > 1)) {
-        stop("At least one effecitive probability of infection (dp) is greater than 1")
+    if (any(dp > 1 | dp < 0)) {
+        stop(paste(c("At least one effecitive probability of infection (dp)",
+                     "is greater than 1 or less than 0"), sep = "\n"))
     }
     1 - prod(1 - dp * hse)
 }
@@ -252,11 +253,12 @@ sysse_finite <- function(dp, hse, N) {
              "as the Effective probability of infection of the herd (dp)",
              sep = "\n"))
     }
-    if (any(hse > 1)) {
-        stop("At least one of the hse values is greater than 1")
+    if (any(hse > 1 | hse < 0)) {
+        stop("At least one of the hse values is greater than 1 or less than 0")
     }
-    if (any(dp > 1)) {
-        stop("At least one effecitive probability of infection (dp) is greater than 1")
+    if (any(dp > 1 | dp < 0)) {
+        stop(paste(c("At least one effecitive probability of infection (dp)",
+                     "is greater than 1 or less than 0"), sep = "\n"))
     }
     1 - prod((1 - hse / N) ^ (dp * N))
 }

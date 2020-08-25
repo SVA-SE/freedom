@@ -1,0 +1,30 @@
+---
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Simple probability of freedom}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+# Here is a simple example of  probability of freedom calculation
+
+You have a population of 10000 herds of which 500 are tested per year
+using a test that has a herd sensitivity (HSe) of 20%; all of these
+tests were negative. You need to calculate the annual surveillance
+system sensitivity (SysSe) and the probability that the disease has a
+lower than 1% prevalance (dp) in the population of herd over time given a
+prior assuption that the probability of the disease being in the
+popuatlion is 50% (prior_pr). You also assume that the annual cummulative
+probabiilty of introduction to the population is 1% (prob_intro).
+
+```{r, echo = TRUE, eval = TRUE, message = FALSE, results = 'hide'}
+library(freedom)
+
+Hse <- rep(0.2, 500)
+dp <- rep(0.01, 500)
+SysSe <- sysse(dp, Hse)
+
+```
+
+So the susrveillance system has a sensitivity of detecting the
+disease at a prevalance of greater than of equal to `r dp[1]`of  `r SysSe`.
