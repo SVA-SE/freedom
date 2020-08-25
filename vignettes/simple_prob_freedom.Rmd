@@ -12,10 +12,11 @@ You have a population of 10000 herds of which 500 are tested per year
 using a test that has a herd sensitivity (HSe) of 20%; all of these
 tests were negative. You need to calculate the annual surveillance
 system sensitivity (SysSe) and the probability that the disease has a
-lower than 1% prevalance (dp) in the population of herd over time given a
-prior assuption that the probability of the disease being in the
-popuatlion is 50% (prior_pr). You also assume that the annual cummulative
-probabiilty of introduction to the population is 1% (prob_intro).
+lower than 1% prevalance (dp) in the population of herd over time
+given a prior assumption that the probability of the disease being
+absent from the population is 50% (prior_pr). You also assume that the
+annual cumulative probability of introduction to the population is 1%
+(prob_intro). This programme was ongoing from 2012 to 2020.
 
 ```{r, echo = TRUE, eval = TRUE, message = FALSE, results = 'hide'}
 library(freedom)
@@ -26,5 +27,38 @@ SysSe <- sysse(dp, Hse)
 
 ```
 
-So the susrveillance system has a sensitivity of detecting the
-disease at a prevalance of greater than of equal to `r dp[1]`of  `r SysSe`.
+The surveillance system has a sensitivity of detecting the disease at
+a prevalence of greater than of equal to `r dp[1]` is `r SysSe` for 1
+year. We can then use this to calculate the probability of freedom of
+disease over time.
+
+```{r, echo = TRUE, eval = TRUE, message = FALSE, results = 'hide'}
+prior_pr <- 0.5
+prob_intro <- 0.01
+
+pr_free <- data.frame(year = 2012:2020,
+                      prior_fr = NA,
+                      post_fr = NA,
+                      stringsAsFactors = FALSE)
+## At the beginning of the first year the probability of freedom is just
+## the prior.
+
+pr_free$prior_fr[1] <- prior_pr
+pr_free$post_fr[1] <- post_fr(pr_free$prior_fr[1], SysSe)
+
+## Then we use the temporal discouting proceedure to calculate the subsequent
+## years:
+
+for (i in seq(2, nrow(pr_free))) {
+    pr_free$prior_fr[i] <- prior_fr(pr_free$post_fr[i - 1], prob_intro)
+    pr_free$post_fr[i] <- post_fr(pr_free$prior_fr[i], SysSe)
+}
+
+```
+
+Now we have the prior and posterior probability of freedom in the
+population for each of the 8 years of suveillance:
+
+```{r, echo = TRUE, eval = TRUE, message = FALSE}
+pr_free
+```
