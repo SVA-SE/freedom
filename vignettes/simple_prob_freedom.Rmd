@@ -12,7 +12,7 @@ You have a population of 10000 herds of which 500 are tested per year
 using a test that has a herd sensitivity (HSe) of 20%; all of these
 tests were negative. You need to calculate the annual surveillance
 system sensitivity (SysSe) and the probability that the disease has a
-lower than 1% prevalance (dp) in the population of herd over time
+lower than 1% prevalence (dp) in the population of herd over time
 given a prior assumption that the probability of the disease being
 absent from the population is 50% (prior_pr). You also assume that the
 annual cumulative probability of introduction to the population is 1%
@@ -57,7 +57,7 @@ for (i in seq(2, nrow(pr_free))) {
 ```
 
 Now we have the prior and posterior probability of freedom in the
-population for each of the 8 years of suveillance:
+population for each of the 8 years of surveillance:
 
 ```{r, echo = TRUE, eval = TRUE, message = FALSE}
 pr_free
