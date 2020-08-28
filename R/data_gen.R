@@ -22,6 +22,15 @@
 ##' @return A data.frame
 ##' @import stats
 ##' @export
+##' @examples
+##' ## Generate the default example data. This will generate a
+##' ## data.frame with a herd identifier (ppn), a herd level unit risk
+##' ## group identifier (herd_urg), a animal level unit risk group
+##' ## identifier (animal_urg), the total number of animals in the unit
+##' ## risk group (N_animal_urg) and the numner of animals tested in the
+##' ## unit risk group (n_animals_urg).
+##'
+##' df <- sample_data()
 sample_data <- function(nherds = 500,
                         mean_herd_size = 50,
                         n_herd_urg = 2,

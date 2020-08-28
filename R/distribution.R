@@ -2,7 +2,6 @@
 ##'
 ##' Returns samples from a pert distribution
 ##'
-##'
 ##' @title rpert
 ##' @param n number of samples
 ##' @param x.min The minimum value in the sample
@@ -12,6 +11,13 @@
 ##' @import stats
 ##' @return a numeric vector of length n
 ##' @export
+##' @example
+##' ## Generate 10000 samples from a pert distribution with a minimum
+##' ## of 2, a max of 5, and a mode of 4.
+##' samples <- rpert(10000, 2, 5, 4)
+##' hist(samples)
+##'
+##' ## Generate a
 rpert <- function(n,
                   x.min,
                   x.max,

@@ -20,6 +20,18 @@
 ##'     are to be applied to each URG.
 ##' @return A data.frame. A dataframe is returned with 2 columns: "id" and HSe
 ##' @export
+##' @examples
+##' df <- data.frame(id = seq(1:20),
+##'                  n_tested = rpois(20, 5),
+##'                  N = 100,
+##'                  test_Se = 0.3,
+##'                  dp = 0.05)
+##' ## Calculate the herd level sensitivity for each of these herds
+##' hse_finite(df$id,
+##'            df$n_tested,
+##'            df$N,
+##'            df$test_Se,
+##'            df$dp)
 hse_finite <- function(id,
                        n_tested,
                        N,
@@ -80,6 +92,18 @@ hse_finite <- function(id,
 ##'     length(dp) == length(n_tested) if diff
 ##' @return A data.frame. A dataframe is returned with 2 columns: "id" and HSe
 ##' @export
+##' @examples
+##' df <- data.frame(id = seq(1:20),
+##'                  n_tested = rpois(20, 5),
+##'                  test_Se = 0.3,
+##'                  dp = 0.05)
+##'
+##' ## Calculate the herd level sensitivity for each of these herds given
+##' ## the assumption that the herds have an infintite size.
+##' hse_infinite(df$id,
+##'              df$n_tested,
+##'              df$test_Se,
+##'              df$dp)
 hse_infinite <- function(id,
                          n_tested,
                          test_Se,
@@ -136,6 +160,22 @@ hse_infinite <- function(id,
 ##'     hse_infinite to calculate HSe.
 ##' @return A vector (length 1)
 ##' @export
+##' @examples
+##' df <- data.frame(id = seq(1:20),
+##'                  n_tested = rpois(20, 6),
+##'                  N = rpois(20, 50),
+##'                  test_Se = 0.3,
+##'                  dp = 0.05)
+##' ## Calculate the herd level sensitivity for each of these herds. If
+##' ## the ratio of the number tested to number of animals in the herd
+##' ## exceeds the threshold then the finite method is used, otherwise the
+##' ## infinite method is used.
+##' hse(df$id,
+##'     df$n_tested,
+##'     df$N,
+##'     df$test_Se,
+##'     df$dp,
+##'     threshold = 0.1)
 hse <- function(id,
                 n_tested,
                 N,
@@ -213,6 +253,26 @@ hse <- function(id,
 ##' @param hse The calculated hse for all the herds tested in the surveillance system
 ##' @return A vector (length 1)
 ##' @export
+##' @examples
+##' df <- data.frame(id = seq(1:20),
+##'                  n_tested = rpois(20, 6),
+##'                  N = rpois(20, 50),
+##'                  test_Se = 0.3,
+##'                  dp = 0.05)
+##' ## Calculate the herd level sensitivity for each of these herds. If
+##' ## the ratio of the number tested to number of animals in the herd
+##' ## exceeds the threshold then the finite method is used, otherwise the
+##' ## infinite method is used.
+##' herd_Se <- hse(df$id,
+##'                df$n_tested,
+##'                df$N,
+##'                df$test_Se,
+##'                df$dp,
+##'                threshold = 0.1)
+##' ## Calculate the system sensitivity given the testing and sensitivity
+##' ## in these herds:
+##' sysse(dp = rep(0.10, nrow(herd_Se)),
+##'       hse = herd_Se$HSe)
 sysse <- function(dp, hse) {
 
     if (length(hse) != length(dp)) {
@@ -246,6 +306,27 @@ sysse <- function(dp, hse) {
 ##' @param N The total number of herds in the population.
 ##' @return A vector (length 1)
 ##' @export
+##' @examples
+##' df <- data.frame(id = seq(1:20),
+##'                   n_tested = rpois(20, 6),
+##'                   N = rpois(20, 50),
+##'                   test_Se = 0.3,
+##'                   dp = 0.05)
+##'  ## Calculate the herd level sensitivity for each of these herds. If
+##'  ## the ratio of the number tested to number of animals in the herd
+##'  ## exceeds the threshold then the finite method is used, otherwise the
+##'  ## infinite method is used.
+##'  herd_Se <- hse(df$id,
+##'                 df$n_tested,
+##'                 df$N,
+##'                 df$test_Se,
+##'                 df$dp,
+##'                 threshold = 0.1)
+##'  ## Calculate the system sensitivity given the testing and sensitivity
+##'  ## in these herds adjusted for the total number of herds in the population:
+##'  sysse_finite(dp = rep(0.10, nrow(herd_Se)),
+##'               hse = herd_Se$HSe,
+##'               N = 100)
 sysse_finite <- function(dp, hse, N) {
 
     if (length(hse) != length(dp)) {
