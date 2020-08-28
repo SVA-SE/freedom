@@ -16,7 +16,9 @@ BugReports: https://github.com/SVA-SE/freedom/issues
 Type: Package
 LazyLoad: yes
 VignetteBuilder: knitr
-Suggests: knitr
+Suggests:
+        knitr,
+        rmarkdown
 Depends: R (>= 4.0)
 Encoding: UTF-8
 RoxygenNote: 7.1.1
