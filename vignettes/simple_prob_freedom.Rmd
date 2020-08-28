@@ -1,12 +1,22 @@
 ---
-output: rmarkdown::html_vignette
+title: Probability of freedom
+author: Thomas Rosendal [![ORCID iD](https://orcid.org/sites/default/files/images/orcid_16x16.gif)](https://orcid.org/0000-0002-6576-9668)
+output:
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
+    toc_depth: 3
 vignette: >
-  %\VignetteIndexEntry{Simple probability of freedom}
+  %\VignetteIndexEntry{Probability of freedom}
   %\VignetteEngine{knitr::rmarkdown}
-  \usepackage[utf8]{inputenc}
+  %\VignetteEncoding{UTF-8}
 ---
 
-# Here is a simple example of  probability of freedom calculation
+# Simple freedom calculation
+
+## Scenario
 
 You have a population of 10000 herds of which 500 are tested per year
 using a test that has a herd sensitivity (HSe) of 20%; all of these
@@ -18,6 +28,8 @@ absent from the population is 50% (prior_pr). You also assume that the
 annual cumulative probability of introduction to the population is 1%
 (prob_intro). This programme was ongoing from 2012 to 2020.
 
+## Calculate system sensitivity
+
 ```{r, echo = TRUE, eval = TRUE, message = FALSE, results = 'hide'}
 library(freedom)
 
@@ -26,6 +38,8 @@ dp <- rep(0.01, 500)
 SysSe <- sysse(dp, Hse)
 
 ```
+
+## Temporal discounting
 
 The surveillance system has a sensitivity of detecting the disease at
 a prevalence of greater than of equal to `r dp[1]` is `r SysSe` for 1
@@ -56,9 +70,17 @@ for (i in seq(2, nrow(pr_free))) {
 
 ```
 
+## Plot results
+
 Now we have the prior and posterior probability of freedom in the
 population for each of the 8 years of surveillance:
 
 ```{r, echo = TRUE, eval = TRUE, message = FALSE}
 pr_free
+plot(x = pr_free$year,
+     y = pr_free$post_fr,
+     type = "l",
+     xlab = "year",
+     ylab = "probability of freedom",
+     main = "Probability of freedom at the end of each calendar year")
 ```
