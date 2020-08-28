@@ -24,6 +24,12 @@ calculated from the posterior probability of freedom (year = k-1)
 from the previous year and the annual probability that the disease
 is introduced into the population.
 }
-\author{
-Thomas Rosendal
+\examples{
+## Calculate the posterior propability of freedom after applying a
+## sensitivity to a prior probability of freedom:
+post_pf <- post_fr(0.5, 0.4)
+## Then discount the probability of introduction (0.05) from the
+## posterior probability of freedom to calculate the subsequent
+## prior probability of freedom for the next time step:
+prior_pf <- prior_fr(post_pf, 0.05)
 }

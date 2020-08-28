@@ -14,7 +14,10 @@
 ##' @param Se The sensitivity of the surveillance system
 ##' @return A vector
 ##' @export
-##' @author Thomas Rosendal
+##' @examples
+##' ## Calculate the posterior propability of freedom after applying a
+##' #sensitivity to a prior probability of freedom:
+##' post_pf <- post_fr(0.5, 0.4)
 post_fr <- function(prior_fr, Se){
 
     if (any(prior_fr > 1 | prior_fr < 0)) {
@@ -41,7 +44,14 @@ post_fr <- function(prior_fr, Se){
 ##' @param intro The annual probability of introduction
 ##' @return A vector. The prior probability of freedom (year = k)
 ##' @export
-##' @author Thomas Rosendal
+##' @examples
+##' ## Calculate the posterior propability of freedom after applying a
+##' ## sensitivity to a prior probability of freedom:
+##' post_pf <- post_fr(0.5, 0.4)
+##' ## Then discount the probability of introduction (0.05) from the
+##' ## posterior probability of freedom to calculate the subsequent
+##' ## prior probability of freedom for the next time step:
+##' prior_pf <- prior_fr(post_pf, 0.05)
 prior_fr <- function(post_fr, intro){
     if (any(post_fr > 1 | post_fr < 0)) {
         stop("The posterior probability of freedom cannot be greater than 1 or less than 0")

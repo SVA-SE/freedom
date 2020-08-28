@@ -27,6 +27,8 @@ subsequent time intervals in the surveillance system, the prior
 year's posterior probability of freedom is used (plus a risk of
 introduction) as the prior probability in this calculation.
 }
-\author{
-Thomas Rosendal
+\examples{
+## Calculate the posterior propability of freedom after applying a
+#sensitivity to a prior probability of freedom:
+post_pf <- post_fr(0.5, 0.4)
 }

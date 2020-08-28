@@ -28,3 +28,23 @@ herds in the population that are in each of the unit risk
 groups. The proportion vector for animal level is the proportion
 of animals within a given herd that are in each URG.
 }
+\examples{
+df <- sample_data(nherds = 100,
+                 mean_herd_size = 300,
+                 n_herd_urg = 2,
+                 herd_dist = c(0.9, 0.1),
+                 herd_samp_frac = 0.01,
+                 herd_samp_dist = c(0.3, 0.7),
+                 n_animal_urg = 1,
+                 animal_dist = c(1),
+                 animal_samp_frac = 0.05,
+                 animal_samp_dist = c(1),
+                 seed = 1)
+## The proportion of herds in each unit risk group
+table(df$herd_urg)/nrow(df)
+## Calculate the Adjusted risk for each unit risk group based on the
+## proportion in each group and the estimated relative risk of being
+## in that group:
+AR <- freedom::adjusted_risk(as.numeric(table(df$herd_urg)/nrow(df)),
+                             c(1, 2.3))
+}

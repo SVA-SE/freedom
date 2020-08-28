@@ -11,7 +11,7 @@
 ##' @import stats
 ##' @return a numeric vector of length n
 ##' @export
-##' @example
+##' @examples
 ##' ## Generate 10000 samples from a pert distribution with a minimum
 ##' ## of 2, a max of 5, and a mode of 4.
 ##' samples <- rpert(10000, 2, 5, 4)

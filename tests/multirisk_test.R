@@ -1,5 +1,5 @@
 library(freedom)
-## 100 herds, 
+## 100 herds,
 df <- sample_data(nherds = 100,
                  mean_herd_size = 300,
                  n_herd_urg = 2,
@@ -36,7 +36,7 @@ df$hse <- hse$HSe[match(df$ppn, hse$id)]
 system_sens <- sysse(df$ephi, df$hse)
 ## Posterior probability of freedom.
 ##
-## This is calculated based on the prior probabiltiy of freedom and
+## This is calculated based on the prior probability of freedom and
 ## the sensitivity of the surveillance system.
 post_pf <- post_fr(0.5, system_sens)
 ## Prior probability at next year assuming an annual risk of
