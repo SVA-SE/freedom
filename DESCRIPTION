@@ -6,7 +6,7 @@ Authors@R: person("Thomas", "Rosendal", role = c("aut", "cre"),
                   comment = c(ORCID = "0000-0002-6576-9668"))
 Description: Implements the formulae required to calculate freedom
     from disease according to Cameron and Baldock (1998)
-    (https://doi.org/10.1016/S0167-5877(97)00081-0). These are the
+    <doi:10.1016/S0167-5877(97)00081-0>. These are the
     methods used at the Swedish national veterinary institute (SVA) to
     evaluate the performatnce of our nation animal disease
     surveillance programmes.

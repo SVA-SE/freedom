@@ -39,7 +39,7 @@ build: clean
 # Build and check package
 check_full: clean
 	cd .. && R CMD build $(PKG_NAME)
-	cd .. && R CMD check $(PKG_TAR)
+	cd .. && R CMD check --as-cran $(PKG_TAR)
 
 
 clean:
