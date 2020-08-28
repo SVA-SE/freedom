@@ -12,7 +12,7 @@ post_fr(prior_fr, Se)
 \item{Se}{The sensitivity of the surveillance system}
 }
 \value{
-A vector (length 1)
+A vector
 }
 \description{
 Calculate the posterior probability of freedom from the prior and

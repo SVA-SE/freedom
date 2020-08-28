@@ -36,3 +36,16 @@ population size to adjust the estimates consistent with a finite
 population. This method for calculation of HSe is typically used
 when greater than 10% of the population has been sampled
 }
+\examples{
+df <- data.frame(id = seq(1:20),
+                 n_tested = rpois(20, 5),
+                 N = 100,
+                 test_Se = 0.3,
+                 dp = 0.05)
+## Calculate the herd level sensitivity for each of these herds
+hse_finite(df$id,
+           df$n_tested,
+           df$N,
+           df$test_Se,
+           df$dp)
+}

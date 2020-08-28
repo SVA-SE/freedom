@@ -46,3 +46,20 @@ individual units within the herd. The function uses the assumption
 of finite population when greater than 10% of units are tested and
 otherwise the assumption of infinite population.
 }
+\examples{
+df <- data.frame(id = seq(1:20),
+                 n_tested = rpois(20, 6),
+                 N = rpois(20, 50),
+                 test_Se = 0.3,
+                 dp = 0.05)
+## Calculate the herd level sensitivity for each of these herds. If
+## the ratio of the number tested to number of animals in the herd
+## exceeds the threshold then the finite method is used, otherwise the
+## infinite method is used.
+hse(df$id,
+    df$n_tested,
+    df$N,
+    df$test_Se,
+    df$dp,
+    threshold = 0.1)
+}

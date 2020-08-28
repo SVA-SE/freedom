@@ -27,6 +27,3 @@ is therefore the minimum prevalance of the disease within a herd
 among the animals that you would like to design the surveillance
 system to detect.
 }
-\author{
-Thomas Rosendal
-}

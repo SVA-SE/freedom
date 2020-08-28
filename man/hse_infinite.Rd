@@ -33,3 +33,16 @@ population size to adjust the estimate. This is consistent with
 the assumption of an infinite population size and is generally
 used when less than 10% of the population has been sampled.
 }
+\examples{
+df <- data.frame(id = seq(1:20),
+                 n_tested = rpois(20, 5),
+                 test_Se = 0.3,
+                 dp = 0.05)
+
+## Calculate the herd level sensitivity for each of these herds given
+## the assumption that the herds have an infintite size.
+hse_infinite(df$id,
+             df$n_tested,
+             df$test_Se,
+             df$dp)
+}

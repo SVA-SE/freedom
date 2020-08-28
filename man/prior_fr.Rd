@@ -12,7 +12,7 @@ prior_fr(post_fr, intro)
 \item{intro}{The annual probability of introduction}
 }
 \value{
-A vector (length = 1) The prior probability of freedom (year = k)
+A vector. The prior probability of freedom (year = k)
 }
 \description{
 Calculate the prior probability of freedom (year = k)

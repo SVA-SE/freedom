@@ -54,3 +54,13 @@ A data.frame
 A function to generate some synthetic data based on a few
 parameters.
 }
+\examples{
+## Generate the default example data. This will generate a
+## data.frame with a herd identifier (ppn), a herd level unit risk
+## group identifier (herd_urg), a animal level unit risk group
+## identifier (animal_urg), the total number of animals in the unit
+## risk group (N_animal_urg) and the numner of animals tested in the
+## unit risk group (n_animals_urg).
+
+df <- sample_data()
+}
