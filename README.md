@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/SVA-SE/freedom.svg?branch=master)](https://travis-ci.org/SVA-SE/freedom)
+[![CRAN status](https://www.r-pkg.org/badges/version/freedom)](https://CRAN.R-project.org/package=freedom)
 
 # freedom
 
