@@ -44,8 +44,8 @@ adjusted_risk <- function(prop, RR) {
         stop("The relative risk of the first URG must be 1. This is the referent group")
     }
 
-    if (!equivalent(sum(prop), 1)) {
-        stop("The proportion vector must sum to 1")
+    if (!valid_proportions(prop)) {
+        stop("The proportion vector must sum to 1 and each value between 0 and 1")
     }
 
     unlist(

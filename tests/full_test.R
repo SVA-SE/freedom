@@ -1,5 +1,6 @@
 library(freedom)
 ## Tolerance of the agreement between observed and expected
+tol <- 1e-7
 
 ## 50 herds sample data
 df <- sample_data(nherds = 50,
@@ -41,5 +42,4 @@ post_pf <- post_fr(0.5, system_sens)
 
 ## Prior probability at next year assuming an annual risk of
 ## introduction of 0.05%
-stopifnot(all(freedom:::equivalent(prior_fr(post_pf, 0.05),
-                                   0.696163691219548)))
+stopifnot(all(abs(prior_fr(post_pf, 0.05) - 0.696163691219548) < tol))
