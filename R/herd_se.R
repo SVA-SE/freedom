@@ -109,13 +109,13 @@ hse_infinite <- function(id,
                          test_Se,
                          dp) {
 
-    if (!(length(n_tested) == length(dp) | length(dp) == 1)) {
+    if (!(length(n_tested) == length(dp) || length(dp) == 1)) {
         stop(paste("The length of the n_tested vector must be equal to the dp vector.",
                    "ie. you must describe both the number fo animals tested in each",
                    "group as well as the dp in each group."), sep = "\n")
     }
 
-    if (!(length(n_tested) == length(test_Se) | length(test_Se) == 1)) {
+    if (!(length(n_tested) == length(test_Se) || length(test_Se) == 1)) {
         stop("Length of test_Se must be 1 or the length of n_tested")
     }
 

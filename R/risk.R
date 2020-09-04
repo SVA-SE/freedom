@@ -44,7 +44,7 @@ adjusted_risk <- function(prop, RR) {
         stop("The relative risk of the first URG must be 1. This is the referent group")
     }
 
-    if (round(sum(prop), 10) != 1) {
+    if (!equivalent(sum(prop), 1)) {
         stop("The proportion vector must sum to 1")
     }
 

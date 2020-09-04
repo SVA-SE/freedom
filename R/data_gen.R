@@ -1,3 +1,15 @@
+##' A function used to check if two values are equilavent to an
+##' accepted tolerance
+##'
+##' @title equivalent
+##' @param x numeric
+##' @param y numeric
+##' @param tolerance a tolerance value
+##' @return logical
+equivalant <- function(x, y, tolerance = 1e-7) {
+    abs(x - y) < tolerance
+}
+
 ##' A function to generate some synthetic data based on a few
 ##' parameters.
 ##'
@@ -59,19 +71,35 @@ sample_data <- function(nherds = 500,
         stop("The length of the animal sample distribution vector must be equal to the number of animal unit risk groups")
     }
 
-    if(sum(herd_dist) != 1) {
+    if(any(herd_dist < 0) || any(herd_dist > 1)) {
+        stop("The distribution of herds between the herd unit risk groups must be between 0 and 1")
+    }
+
+    if(!equivalant(sum(herd_dist), 1)) {
         stop("The distribution of herds between the herd unit risk groups must sum to 1")
     }
 
-    if(sum(herd_samp_dist) != 1) {
+    if(any(herd_samp_dist < 0) || any(herd_samp_dist > 1)) {
+        stop("The distribution of herd SAMPLES between the herd unit risk groups must be between 0 and 1")
+    }
+
+    if(!equivalant(sum(herd_samp_dist), 1)) {
         stop("The distribution of herd SAMPLES between the herd unit risk groups must sum to 1")
     }
 
-    if(sum(animal_dist) != 1) {
+    if(any(animal_dist < 0) || any(animal_dist > 1)) {
+        stop("The distribution of animals between the animal unit risk groups must be between 0 and 1")
+    }
+
+    if(!equivalant(sum(animal_dist), 1)) {
         stop("The distribution of animals between the animal unit risk groups must sum to 1")
     }
 
-    if(sum(animal_samp_dist) != 1) {
+    if(any(animal_samp_dist < 0) || any(animal_samp_dist > 1)) {
+        stop("The distribution of animal SAMPLES between the animal unit risk groups must be between 0 and 1")
+    }
+
+    if(!equivalant(sum(animal_samp_dist), 1)) {
         stop("The distribution of animal SAMPLES between the animal unit risk groups must sum to 1")
     }
 
