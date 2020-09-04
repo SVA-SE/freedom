@@ -15,7 +15,7 @@ hse_infinite(id, n_tested, test_Se, dp)
 == 1 if all URG and all herds have the same test_Se. It may
 also have length(test_Se) == length(n_tested).}
 
-\item{dp}{The design prevalance (dp) could be length(dp) == 1 if
+\item{dp}{The design prevalence (dp) could be length(dp) == 1 if
 all URG and herds have the same dp. It could alternatively be
 length(dp) == length(n_tested) if diff}
 }
@@ -40,7 +40,7 @@ df <- data.frame(id = seq(1:20),
                  dp = 0.05)
 
 ## Calculate the herd level sensitivity for each of these herds given
-## the assumption that the herds have an infintite size.
+## the assumption that the herds have an infinite size.
 hse_infinite(df$id,
              df$n_tested,
              df$test_Se,

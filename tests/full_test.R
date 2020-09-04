@@ -36,7 +36,7 @@ system_sens <- sysse(rep(0.02, nrow(df)), df$hse)
 
 ## Posterior probability of freedom.
 ##
-## This is calculated based on the prior probabiltiy of freedom and
+## This is calculated based on the prior probability of freedom and
 ## the sensitivity of the surveillance system.
 post_pf <- post_fr(0.5, system_sens)
 

@@ -31,7 +31,7 @@ valid_proportions <- function(x, tolerance = 1e-7) {
 ##' @param n_animal_urg The number of animal level risk groups
 ##' @param animal_dist The fraction of animals within herds that are
 ##'     part of each risk group
-##' @param animal_samp_frac The total samplign fraction of animals
+##' @param animal_samp_frac The total sampling fraction of animals
 ##'     within herds
 ##' @param animal_samp_dist The fraction of samples that are collected
 ##'     from each animal risk group
@@ -45,7 +45,7 @@ valid_proportions <- function(x, tolerance = 1e-7) {
 ##' ## data.frame with a herd identifier (ppn), a herd level unit risk
 ##' ## group identifier (herd_urg), a animal level unit risk group
 ##' ## identifier (animal_urg), the total number of animals in the unit
-##' ## risk group (N_animal_urg) and the numner of animals tested in the
+##' ## risk group (N_animal_urg) and the number of animals tested in the
 ##' ## unit risk group (n_animals_urg).
 ##'
 ##' df <- sample_data()

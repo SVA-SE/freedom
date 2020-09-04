@@ -25,7 +25,7 @@ from the previous year and the annual probability that the disease
 is introduced into the population.
 }
 \examples{
-## Calculate the posterior propability of freedom after applying a
+## Calculate the posterior probability of freedom after applying a
 ## sensitivity to a prior probability of freedom:
 post_pf <- post_fr(0.5, 0.4)
 ## Then discount the probability of introduction (0.05) from the

@@ -18,12 +18,12 @@ A vector of EPI
 EffProbInf
 }
 \details{
-Calculate the effective probability of infection (EPI) for each unsit
+Calculate the effective probability of infection (EPI) for each unit
 risk group in the population. This could be either at the herd
 level or within herd level. The dp for herds is therefore the
-minimum prevlance among herds that you would like to design the
+minimum prevalence among herds that you would like to design the
 surveillance system to be able to detect. The dp for within herds
-is therefore the minimum prevalance of the disease within a herd
+is therefore the minimum prevalence of the disease within a herd
 among the animals that you would like to design the surveillance
 system to detect.
 }

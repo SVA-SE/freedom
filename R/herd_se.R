@@ -14,9 +14,9 @@
 ##' @param test_Se The sensitivity of the test. This may have length
 ##'     == 1 if all URG and all herds have the same test_Se. It may
 ##'     also have length(test_Se) == length(n_tested).
-##' @param dp The design prevalance (dp) could be length(dp) == 1 if
+##' @param dp The design prevalence (dp) could be length(dp) == 1 if
 ##'     all URG and herds have the same dp. It could alternatively be
-##'     length(dp) == length(n_tested) if different design prevalances
+##'     length(dp) == length(n_tested) if different design prevalences
 ##'     are to be applied to each URG.
 ##' @return A data.frame. A dataframe is returned with 2 columns: "id" and HSe
 ##' @export
@@ -87,7 +87,7 @@ hse_finite <- function(id,
 ##' @param test_Se The sensitivity of the test. This may have length
 ##'     == 1 if all URG and all herds have the same test_Se. It may
 ##'     also have length(test_Se) == length(n_tested).
-##' @param dp The design prevalance (dp) could be length(dp) == 1 if
+##' @param dp The design prevalence (dp) could be length(dp) == 1 if
 ##'     all URG and herds have the same dp. It could alternatively be
 ##'     length(dp) == length(n_tested) if diff
 ##' @return A data.frame. A dataframe is returned with 2 columns: "id" and HSe
@@ -99,7 +99,7 @@ hse_finite <- function(id,
 ##'                  dp = 0.05)
 ##'
 ##' ## Calculate the herd level sensitivity for each of these herds given
-##' ## the assumption that the herds have an infintite size.
+##' ## the assumption that the herds have an infinite size.
 ##' hse_infinite(df$id,
 ##'              df$n_tested,
 ##'              df$test_Se,
@@ -111,7 +111,7 @@ hse_infinite <- function(id,
 
     if (!(length(n_tested) == length(dp) || length(dp) == 1)) {
         stop(paste("The length of the n_tested vector must be equal to the dp vector.",
-                   "ie. you must describe both the number fo animals tested in each",
+                   "ie. you must describe both the number of animals tested in each",
                    "group as well as the dp in each group."), sep = "\n")
     }
 
@@ -146,14 +146,14 @@ hse_infinite <- function(id,
 ##'     for different URG. Then supply a vector of Sensitivities. This
 ##'     could conceivably be because of using different tests for
 ##'     different samples from different URG.
-##' @param dp The is a vector (length 1) of the the design prevalance
+##' @param dp The is a vector (length 1) of the design prevalence
 ##'     (df) in the case where there is only one unit risk group (URG)
 ##'     in the herd. Or a vector (length n) of EPIn for each of the
 ##'     URG in the herd.
 ##' @param threshold The breakpoint above which the finite population
 ##'     size calculation will be used. The default is 0.1 which means
 ##'     that if > 10% of animals are tested in a herd the finite
-##'     popualation will be assumed; less than or equal to 10%, the
+##'     population will be assumed; less than or equal to 10%, the
 ##'     infinite population will be assumed.
 ##' @param force If force = FALSE (default) then the function errors
 ##'     if n>N. If force = TRUE then this is allowed and uses the
@@ -197,7 +197,7 @@ hse <- function(id,
                    "for these herds, set force = TRUE", sep = "\n"))
     }
 
-    ## Use the finite calculation for those with more than the threshhold
+    ## Use the finite calculation for those with more than the threshold
     finite <- NULL
     index_finite <- (ratio > threshold) & (ratio < 1)
     test_Se_finite <- test_Se
@@ -247,7 +247,7 @@ hse <- function(id,
 ##' Takes a vector of the sensitivity of herds tested in the
 ##' surveillance system and a vector of the effective probability of
 ##' infection in the herds (EPIH) to calculate the total surveillance system
-##' sensitvity for the entire program.
+##' sensitivity for the entire program.
 ##' @title sysse
 ##' @param dp The vector of EPIH for all herds tested in the surveillance system
 ##' @param hse The calculated hse for all the herds tested in the surveillance system
@@ -284,7 +284,7 @@ sysse <- function(dp, hse) {
         stop("At least one of the hse values is greater than 1 or less than 0")
     }
     if (any(dp > 1 | dp < 0)) {
-        stop(paste(c("At least one effecitive probability of infection (dp)",
+        stop(paste(c("At least one effective probability of infection (dp)",
                      "is greater than 1 or less than 0"), sep = "\n"))
     }
     1 - prod(1 - dp * hse)
@@ -297,7 +297,7 @@ sysse <- function(dp, hse) {
 ##' surveillance system and a vector of the effective probability of
 ##' infection in the herds (EPIH) to calculate the total surveillance
 ##' system sensitivity for the entire program. This is adjusted for
-##' the the total number of herds in the population.
+##' the total number of herds in the population.
 ##' @title sysse
 ##' @param dp The vector of EPIH for all herds tested in the
 ##'     surveillance system.
@@ -338,7 +338,7 @@ sysse_finite <- function(dp, hse, N) {
         stop("At least one of the hse values is greater than 1 or less than 0")
     }
     if (any(dp > 1 | dp < 0)) {
-        stop(paste(c("At least one effecitive probability of infection (dp)",
+        stop(paste(c("At least one effective probability of infection (dp)",
                      "is greater than 1 or less than 0"), sep = "\n"))
     }
     1 - prod((1 - hse / N) ^ (dp * N))

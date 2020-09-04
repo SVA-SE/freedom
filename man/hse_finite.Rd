@@ -17,9 +17,9 @@ hse_finite(id, n_tested, N, test_Se, dp)
 == 1 if all URG and all herds have the same test_Se. It may
 also have length(test_Se) == length(n_tested).}
 
-\item{dp}{The design prevalance (dp) could be length(dp) == 1 if
+\item{dp}{The design prevalence (dp) could be length(dp) == 1 if
 all URG and herds have the same dp. It could alternatively be
-length(dp) == length(n_tested) if different design prevalances
+length(dp) == length(n_tested) if different design prevalences
 are to be applied to each URG.}
 }
 \value{

@@ -5,7 +5,7 @@ tol <- 1e-7
 
 ## Adjusted risks
 stopifnot(any(abs(adjusted_risk(c(0.1, 0.9), c(1, 4)) - c(0.2702702703, 1.0810810811)) < tol))
-## Effective propbabilty of infection
+## Effective probability of infection
 stopifnot(any(abs(EffProbInf(dp = 0.01, adjusted_risk(c(0.1, 0.9), c(1, 4))) - c(0.0027027027, 0.0108108108)) < tol))
 
 ## Herd Se

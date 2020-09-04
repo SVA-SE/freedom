@@ -21,7 +21,7 @@ Calculate the surveillance system sensitivity
 Takes a vector of the sensitivity of herds tested in the
 surveillance system and a vector of the effective probability of
 infection in the herds (EPIH) to calculate the total surveillance system
-sensitvity for the entire program.
+sensitivity for the entire program.
 }
 \examples{
 df <- data.frame(id = seq(1:20),

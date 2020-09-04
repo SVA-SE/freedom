@@ -19,16 +19,16 @@ Calculate the posterior probability of freedom from the prior and
 the sensitivity of the system
 }
 \details{
-The prior probabailty of freedom at the beginning of the
+The prior probability of freedom at the beginning of the
 surveillance initiative is a value that is based on some external
 evidence. Often 0.5 is used as a conservative estimate of the
-probabaility that the population is free from the disease. For
+probability that the population is free from the disease. For
 subsequent time intervals in the surveillance system, the prior
 year's posterior probability of freedom is used (plus a risk of
 introduction) as the prior probability in this calculation.
 }
 \examples{
-## Calculate the posterior propability of freedom after applying a
+## Calculate the posterior probability of freedom after applying a
 #sensitivity to a prior probability of freedom:
 post_pf <- post_fr(0.5, 0.4)
 }
