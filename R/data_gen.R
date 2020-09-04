@@ -6,7 +6,7 @@
 ##' @param y numeric
 ##' @param tolerance a tolerance value
 ##' @return logical
-equivalant <- function(x, y, tolerance = 1e-7) {
+equivalent <- function(x, y, tolerance = 1e-7) {
     abs(x - y) < tolerance
 }
 
@@ -75,7 +75,7 @@ sample_data <- function(nherds = 500,
         stop("The distribution of herds between the herd unit risk groups must be between 0 and 1")
     }
 
-    if(!equivalant(sum(herd_dist), 1)) {
+    if(!equivalent(sum(herd_dist), 1)) {
         stop("The distribution of herds between the herd unit risk groups must sum to 1")
     }
 
@@ -83,7 +83,7 @@ sample_data <- function(nherds = 500,
         stop("The distribution of herd SAMPLES between the herd unit risk groups must be between 0 and 1")
     }
 
-    if(!equivalant(sum(herd_samp_dist), 1)) {
+    if(!equivalent(sum(herd_samp_dist), 1)) {
         stop("The distribution of herd SAMPLES between the herd unit risk groups must sum to 1")
     }
 
@@ -91,7 +91,7 @@ sample_data <- function(nherds = 500,
         stop("The distribution of animals between the animal unit risk groups must be between 0 and 1")
     }
 
-    if(!equivalant(sum(animal_dist), 1)) {
+    if(!equivalent(sum(animal_dist), 1)) {
         stop("The distribution of animals between the animal unit risk groups must sum to 1")
     }
 
@@ -99,7 +99,7 @@ sample_data <- function(nherds = 500,
         stop("The distribution of animal SAMPLES between the animal unit risk groups must be between 0 and 1")
     }
 
-    if(!equivalant(sum(animal_samp_dist), 1)) {
+    if(!equivalent(sum(animal_samp_dist), 1)) {
         stop("The distribution of animal SAMPLES between the animal unit risk groups must sum to 1")
     }
 

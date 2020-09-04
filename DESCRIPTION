@@ -1,6 +1,6 @@
 Package: freedom
 Title: Demonstration of Disease Freedom (DDF)
-Version: 1.0
+Version: 1.0.1
 Authors@R: person("Thomas", "Rosendal", role = c("aut", "cre"),
                   email = "trosendal@gmail.com",
                   comment = c(ORCID = "0000-0002-6576-9668"))

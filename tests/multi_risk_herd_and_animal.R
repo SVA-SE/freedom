@@ -70,7 +70,7 @@ post_pf <- post_fr(0.5, system_sens)
 
 ## Prior probability at next year assuming an annual risk of
 ## introduction of 0.05%
-stopifnot(equivalent(prior_fr(post_pf, 0.05), 0.642596871541303))
+stopifnot(freedom:::equivalent(prior_fr(post_pf, 0.05), 0.642596871541303))
 rm(list = ls())
 
 ## 100 herds
