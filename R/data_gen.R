@@ -123,8 +123,10 @@ sample_data <- function(nherds = 500,
         df$N_animal_urg <- N_animal_urg
         df$n_animal_urg <- n_sample_animal_urg
 
-        return(df)
+        df
     }))
 
-    subset(herds, select = -c(sample, N, n))
+    herds <- subset(herds, select = -c(sample, N, n))
+    rownames(herds) <- NULL
+    herds
 }
