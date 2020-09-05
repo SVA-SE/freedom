@@ -19,6 +19,6 @@ VignetteBuilder: knitr
 Suggests:
         knitr,
         rmarkdown
-Depends: R (>= 3.6.2)
+Depends: R (>= 3.6)
 Encoding: UTF-8
 RoxygenNote: 7.1.1
