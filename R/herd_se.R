@@ -61,7 +61,7 @@ hse_finite <- function(id,
 
     A <- 1 - (n_tested * test_Se / N)
 
-    B <- dp * N
+    B <- max(round(dp * N), 1)
 
     df <- as.data.frame(1 - tapply(A ^ B, INDEX = id, FUN = "prod"))
 
