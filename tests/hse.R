@@ -9,3 +9,13 @@ stopifnot(hse(1, 1, 100, 1, 0.05)$method == "infinite")
 
 ## And the opposite
 stopifnot(hse(1, 90, 100, 1, 0.05)$method == "finite")
+
+## Makesure we get an error when oversampling
+res <- tools::assertError(hse(1, 100, 90, 0.9, dp = 0.1))
+
+ob <- length(grep("Greater than 100% of animals cannot be tested.\nThis occurs in the following ids:\n1\nTo ignore this an default to infinite population\nfor these herds, set force = TRUE", res[[1]]$message) == 1)
+
+stopifnot(ob == 1)
+
+## and allow the same with force
+hse(1, 100, 90, 0.9, dp = 0.1, force = TRUE)
