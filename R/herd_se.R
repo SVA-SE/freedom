@@ -199,7 +199,7 @@ hse <- function(id,
 
     ## Use the finite calculation for those with more than the threshold
     finite <- NULL
-    index_finite <- (ratio > threshold) & (ratio < 1)
+    index_finite <- (ratio > threshold) & (ratio <= 1)
     test_Se_finite <- test_Se
     if (length(test_Se) > 1) {
         test_Se_finite <- test_Se[index_finite]
