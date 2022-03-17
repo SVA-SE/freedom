@@ -18,7 +18,15 @@
 ##'     all URG and herds have the same dp. It could alternatively be
 ##'     length(dp) == length(n_tested) if different design prevalences
 ##'     are to be applied to each URG.
-##' @return A data.frame. A dataframe is returned with 2 columns: "id" and HSe
+##' @param rounding How should the proportion of animals be rounded?
+##'     Default value is 'none' which does no rounding. Other options
+##'     are 'round', 'ceiling', and 'floor'. 'round' rounds the dp * N
+##'     to the nearest integer and then selects 1 if the value is
+##'     0. 'ceiling' takes the ceiling of dp * N, this is consistent
+##'     with the method in the Rsurveillance package. 'floor' takes
+##'     the floor of dp * N and makes it 1 if the result is 0.
+##' @return A data.frame. A dataframe is returned with 2 columns: "id"
+##'     and HSe
 ##' @export
 ##' @examples
 ##' df <- data.frame(id = seq(1:20),
@@ -36,7 +44,10 @@ hse_finite <- function(id,
                        n_tested,
                        N,
                        test_Se,
-                       dp) {
+                       dp,
+                       rounding = c("none", "ceiling", "round", "floor")) {
+
+    rounding <- match.arg(rounding)
 
     if (length(n_tested) != length(N)) {
         stop(paste("The length of the n_tested vector must be equal to the N vector.",
@@ -66,6 +77,18 @@ hse_finite <- function(id,
     A <- 1 - (n_tested * test_Se / N)
 
     B <- dp * N
+
+    if (rounding == "round") {
+        B <- pmax(round(dp * N), 1)
+    }
+
+    if (rounding == "ceiling") {
+        B <- ceiling(dp * N)
+    }
+
+    if (rounding == "floor") {
+        B <- pmax(floor(dp * N), 1)
+    }
 
     df <- as.data.frame(1 - tapply(A ^ B, INDEX = id, FUN = "prod"))
 

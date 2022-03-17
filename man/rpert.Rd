@@ -32,5 +32,4 @@ Returns samples from a pert distribution
 samples <- rpert(10000, 2, 5, 4)
 hist(samples)
 
-## Generate a
 }

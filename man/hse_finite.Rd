@@ -4,7 +4,14 @@
 \alias{hse_finite}
 \title{hse_finite}
 \usage{
-hse_finite(id, n_tested, N, test_Se, dp)
+hse_finite(
+  id,
+  n_tested,
+  N,
+  test_Se,
+  dp,
+  rounding = c("none", "ceiling", "round", "floor")
+)
 }
 \arguments{
 \item{id}{The herdid.}
@@ -21,9 +28,18 @@ also have length(test_Se) == length(n_tested).}
 all URG and herds have the same dp. It could alternatively be
 length(dp) == length(n_tested) if different design prevalences
 are to be applied to each URG.}
+
+\item{rounding}{How should the proportion of animals be rounded?
+Default value is 'none' which does no rounding. Other options
+are 'round', 'ceiling', and 'floor'. 'round' rounds the dp * N
+to the nearest integer and then selects 1 if the value is
+0. 'ceiling' takes the ceiling of dp * N, this is consistent
+with the method in the Rsurveillance package. 'floor' takes
+the floor of dp * N and makes it 1 if the result is 0.}
 }
 \value{
-A data.frame. A dataframe is returned with 2 columns: "id" and HSe
+A data.frame. A dataframe is returned with 2 columns: "id"
+    and HSe
 }
 \description{
 Herd Sensitivity calculated with the assumption of a finite
