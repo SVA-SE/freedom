@@ -36,6 +36,10 @@
 ##'                              c(1, 2.3))
 adjusted_risk <- function(prop, RR) {
 
+    if (length(RR) < 2) {
+        stop("We expect at least 2 unit risk groups (URG). ie the length of the vector arguments should be > 1")
+    }
+
     if (length(prop) != length(RR)) {
         stop("The length of the proportions vector must be equal to the length of the RR vector")
     }
