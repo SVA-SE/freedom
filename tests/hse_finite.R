@@ -30,6 +30,6 @@ ob <- hse_finite(c(1, 2), c(10, 10), c(25, 25), 0.8, 0.1)
 stopifnot(nrow(ob) == 2)
 
 ## Ensure the id column is the same length as n_tested
-ob <- tools::assertError(hse_finite(1, c(10, 10), c(25, 25), 0.8, 0.1))
-ex <- "Argument id (grouping variable) should be the same length as n_tested"
-stopifnot(length(grep(ex, ob) == 1))
+ob <- tools::assertError(hse_finite(1, c(10, 10), c(25, 25), 0.8, 0.1))[[1]]$message
+ex <- "Argument id \\(grouping variable\\) should be the same length as n_tested"
+stopifnot(length(grep(ex, ob)) == 1)
