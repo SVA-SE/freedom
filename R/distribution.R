@@ -17,7 +17,6 @@
 ##' samples <- rpert(10000, 2, 5, 4)
 ##' hist(samples)
 ##'
-##' ## Generate a
 rpert <- function(n,
                   x.min,
                   x.max,
@@ -45,5 +44,5 @@ rpert <- function(n,
     }
 
     w <- (v * (x.max - mu)) / (mu - x.min)
-    return (rbeta(n, v, w) * x.range + x.min)
+    rbeta(n, v, w) * x.range + x.min
 }
