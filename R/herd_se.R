@@ -49,14 +49,18 @@ hse_finite <- function(id,
         stop("One of the URG has more subunits tested than in the population")
     }
 
-    if (!(length(dp) == 1 | length(n_tested) == length(dp))) {
+    if (!(length(dp) == 1 || length(n_tested) == length(dp))) {
         stop(paste("The length of the n_tested vector must be equal to the dp vector.",
                    "ie. you must describe both the number of animals tested in each",
                    "group as well as the dp in each group.", sep = "\n"))
     }
 
-    if(!(length(test_Se) == 1 | length(test_Se) == length(n_tested))) {
+    if (!(length(test_Se) == 1 || length(test_Se) == length(n_tested))) {
         stop("The length of test_Se must be either 1 or the length of n_tested")
+    }
+
+    if (!(length(id) == length(n_tested))) {
+        stop("Argument id (grouping variable) should be the same length as n_tested")
     }
 
     A <- 1 - (n_tested * test_Se / N)
