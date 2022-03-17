@@ -97,14 +97,14 @@ adjusted_risk <- function(prop, RR) {
 ##' EPHI <- EffProbInf(0.05, AR)
 EffProbInf <- function(dp, AR) {
 
-    if (!(length(dp) == 1 | length(dp) == length(AR))) {
+    if (!(length(dp) == 1 || length(dp) == length(AR))) {
         stop("The design prevalence (dp) vector must be length 1 or be equal in length to the AR vector")
     }
 
     epi <- dp * AR
 
-    if(any(epi >=1)){
-        warning(paste(c("The EPI should not be greater than 1 for any URG.",
+    if (any(epi >= 1)){
+        warning(paste(c("The EPI should not be greater than 1 for any URG. ",
                         "Consider your choices of design prevalence and the",
                         "relative risks of the URG"), sep = "\n"))
     }
