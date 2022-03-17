@@ -16,14 +16,14 @@ stopifnot(hse(1, 90, 100, 1, 0.05)$method == "finite")
 
 ## Makesure we get an error when oversampling
 res <- tools::assertError(hse(1, 100, 90, 0.9, dp = 0.1))
-
-ex <- paste("The length of the n_tested vector must be equal to the N",
-                   "vector. ie. you must describe both the number of animals",
-                   "tested in each group as well as how many animals are in",
-                   "each group.", sep = "\n")
-ob <- length(grep(ex, res[[1]]$message) == 1L)
-
-stopifnot(abs(ob - 1) < tol)
+problem <- 1
+ex <- paste("Greater than 100% of animals cannot be tested.",
+            "This occurs in the following ids:",
+            paste(problem, collapse = ", "),
+            "To ignore this an default to infinite population",
+            "for these herds, set force = TRUE", sep = "\n")
+ob <- length(grep(ex, res[[1]]$message)) == 1L
+stopifnot(ob)
 
 ## and allow the same with force
 hse(1, 100, 90, 0.9, dp = 0.1, force = TRUE)

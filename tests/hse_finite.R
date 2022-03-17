@@ -28,9 +28,10 @@ stopifnot(length(grep(ex, ob)) == 1)
 ob <- tools::assertError(hse_finite(c(1, 2),
                                     c(25, 25), 10, 0.8, 0.1))[[1]]$message
 ex <- paste("The length of the n_tested vector must be equal to the N",
-            "vector.\nie. you must describe both the number of animals",
-            "tested in each\ngroup as well as how many animals are in",
-            "each group.")
+            "vector. ie. you must describe both the number of animals",
+            "tested in each group as well as how many animals are in",
+            "each group.", sep = "\n")
+
 stopifnot(length(grep(ex, ob)) == 1L)
 
 ## Vectors must be the same length
@@ -39,10 +40,12 @@ ob <- tools::assertError(hse_finite(c(1, 2),
                                     c(50, 50),
                                     0.8,
                                     dp = c(0.1, 0.2, 0.1)))[[1]]$message
-ex <- paste("The length of the n_tested vector must be equal to the",
-            "dp vector.\nie. you must describe both the number of",
-            "animals tested in each\ngroup as well as the dp in",
-            "each group.")
+
+ex <- paste("The length of the n_tested vector must be equal to",
+            "the dp vector. ie. you must describe both the number of",
+            "animals tested in each group as well as the dp in",
+            "each group.", sep = "\n")
+
 stopifnot(length(grep(ex, ob)) == 1L)
 
 ## Vectors must be the same length

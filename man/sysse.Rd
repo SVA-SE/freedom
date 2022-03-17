@@ -7,9 +7,11 @@
 sysse(dp, hse)
 }
 \arguments{
-\item{dp}{The vector of EPIH for all herds tested in the surveillance system}
+\item{dp}{The vector of EPIH for all herds tested in the
+surveillance system}
 
-\item{hse}{The calculated hse for all the herds tested in the surveillance system}
+\item{hse}{The calculated hse for all the herds tested in the
+surveillance system}
 }
 \value{
 A vector (length 1)
@@ -20,8 +22,8 @@ Calculate the surveillance system sensitivity
 \details{
 Takes a vector of the sensitivity of herds tested in the
 surveillance system and a vector of the effective probability of
-infection in the herds (EPIH) to calculate the total surveillance system
-sensitivity for the entire program.
+infection in the herds (EPIH) to calculate the total surveillance
+system sensitivity for the entire program.
 }
 \examples{
 df <- data.frame(id = seq(1:20),
