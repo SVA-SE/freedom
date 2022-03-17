@@ -8,7 +8,7 @@
 ##' @param x.max The maximum value in the sample
 ##' @param x.mode The mode of the sample
 ##' @param lambda lambda
-##' @import stats
+##' @importFrom stats rbeta
 ##' @return a numeric vector of length n
 ##' @export
 ##' @examples
