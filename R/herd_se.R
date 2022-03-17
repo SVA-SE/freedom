@@ -73,7 +73,7 @@ hse_finite <- function(id,
 
     df$id <- rownames(df)
 
-    df[,c("id", "HSe")]
+    df[, c("id", "HSe")]
 }
 
 ##' Herd Sensitivity calculated with the assumption of an infinite
@@ -123,6 +123,10 @@ hse_infinite <- function(id,
         stop("Length of test_Se must be 1 or the length of n_tested")
     }
 
+    if (!(length(id) == length(n_tested))) {
+        stop("Argument id (grouping variable) should be the same length as n_tested")
+    }
+
     A <- 1 - (dp * test_Se)
 
     df <- as.data.frame(1 - tapply(A ^ n_tested, INDEX = id, FUN = "prod"))
@@ -131,7 +135,7 @@ hse_infinite <- function(id,
 
     df$id <- rownames(df)
 
-    df[,c("id", "HSe")]
+    df[, c("id", "HSe")]
 }
 
 ##' Herd Sensitivity
