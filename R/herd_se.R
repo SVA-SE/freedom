@@ -346,7 +346,7 @@ sysse_finite <- function(dp, hse, N) {
         stop("At least one of the hse values is greater than 1 or less than 0")
     }
     if (any(dp > 1 | dp < 0)) {
-        stop(paste(c("At least one effective probability of infection (dp)",
+        stop(paste(c("At least one effective probability of infection (dp) ",
                      "is greater than 1 or less than 0"), sep = "\n"))
     }
     1 - prod((1 - hse / N) ^ (dp * N))
