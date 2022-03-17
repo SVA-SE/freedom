@@ -11,7 +11,8 @@ stopifnot(sysse_finite(c(1, 1), c(0.8, 0.8), c(1, 1)) > 0.8)
 
 ## Expect the vectors to have the same length
 ob <- tools::assertError(sysse_finite(c(1, 1), c(0.8), c(1, 1)))[[1]]$message
-ex <- "The herd Se vector \\(hse\\) must be the same length\nas the Effective probability of infection of the herd \\(dp\\)"
+ex <- paste("The herd Se vector \\(hse\\) must be the same length\nas the",
+            "Effective probability of infection of the herd \\(dp\\)")
 stopifnot(length(grep(ex, ob)) == 1L)
 
 ## Expect the dp values to be between 0 and 1
@@ -25,6 +26,7 @@ stopifnot(length(grep(ex, ob2)) == 1L)
 ## Expect the dp values to be between 0 and 1
 ob1 <- tools::assertError(sysse_finite(1.5, 1, 1))[[1]]$message
 ob2 <- tools::assertError(sysse_finite(-0.1, 1, 1))[[1]]$message
-ex <- "At least one effective probability of infection \\(dp\\) is greater than 1 or less than 0"
+ex <- paste("At least one effective probability of infection \\(dp\\)",
+            "is greater than 1 or less than 0")
 stopifnot(length(grep(ex, ob1)) == 1L)
 stopifnot(length(grep(ex, ob2)) == 1L)

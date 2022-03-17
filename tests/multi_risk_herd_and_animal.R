@@ -33,7 +33,8 @@ table(df$herd_urg) / nrow(df)
 AR <- adjusted_risk(as.numeric(table(df$herd_urg) / nrow(df)), c(1, 2.3))
 EPHI <- EffProbInf(0.02, AR)
 EPHI <- data.frame(ppn = sort(unique(df$ppn)),
-                   EPHI = EPHI[df$herd_urg[match(sort(unique(df$ppn)), df$ppn)]])
+                   EPHI = EPHI[df$herd_urg[match(sort(unique(df$ppn)),
+                                                 df$ppn)]])
 
 ## Now calculate the EPAI for each animal category in each herd
 df$epai <- unlist(
@@ -43,7 +44,8 @@ lapply(unique(df$ppn), function(x) {
     EffProbInf(0.15, adjusted_risk(prop, c(1, 3)))
 })
 )
-prop <- tapply(df$n_animal_urg, df$ppn, "sum") / tapply(df$N_animal_urg, df$ppn, "sum")
+prop <- tapply(df$n_animal_urg, df$ppn, "sum") /
+    tapply(df$N_animal_urg, df$ppn, "sum")
 df$prop <- prop[match(df$ppn, names(prop))]
 
 ## Then use this in the Herd sensitivity Calculation
@@ -115,10 +117,12 @@ df <- sample_data(nherds = 200,
 table(df$herd_urg) / nrow(df)
 
 ## Now calculate the EPHI for each herdtype
-AR <- adjusted_risk(as.numeric(table(df$herd_urg)/nrow(df)), c(1, 2.3, 1.5, 9, 3))
+AR <- adjusted_risk(as.numeric(table(df$herd_urg) / nrow(df)),
+                    c(1, 2.3, 1.5, 9, 3))
 EPHI <- EffProbInf(0.02, AR)
 EPHI <- data.frame(ppn = sort(unique(df$ppn)),
-                   EPHI = EPHI[df$herd_urg[match(sort(unique(df$ppn)), df$ppn)]])
+                   EPHI = EPHI[df$herd_urg[match(sort(unique(df$ppn)),
+                                                 df$ppn)]])
 
 ## Now calculate the EPAI for each animal category in each herd
 df$epai <- unlist(
@@ -128,15 +132,23 @@ lapply(unique(df$ppn), function(x) {
     EffProbInf(0.15, adjusted_risk(prop, c(1, 3, 1.5, 2, 4)))
 })
 )
-prop <- tapply(df$n_animal_urg, df$ppn, "sum") / tapply(df$N_animal_urg, df$ppn, "sum")
+prop <- tapply(df$n_animal_urg, df$ppn, "sum") /
+    tapply(df$N_animal_urg, df$ppn, "sum")
 df$prop <- prop[match(df$ppn, names(prop))]
 
 ## Then use this in the Herd sensitivity Calculation
 ##
 df_finite <- df[df$prop > 0.1, ]
 df_infinite <- df[df$prop <= 0.1, ]
-hse1 <- hse_finite(df_finite$ppn, df_finite$n_animal_urg, df_finite$N_animal_urg, 0.7, df_finite$epai)
-hse2 <- hse_infinite(df_infinite$ppn, df_infinite$n_animal_urg, 0.7, df_infinite$epai)
+hse1 <- hse_finite(df_finite$ppn,
+                   df_finite$n_animal_urg,
+                   df_finite$N_animal_urg,
+                   0.7,
+                   df_finite$epai)
+hse2 <- hse_infinite(df_infinite$ppn,
+                     df_infinite$n_animal_urg,
+                     0.7,
+                     df_infinite$epai)
 HSE <- rbind(hse1, hse2)
 HSE$EPHI <- EPHI$EPHI[match(HSE$id, EPHI$ppn)]
 

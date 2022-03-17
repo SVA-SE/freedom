@@ -50,10 +50,10 @@ hse_finite <- function(id,
     rounding <- match.arg(rounding)
 
     if (length(n_tested) != length(N)) {
-        stop(paste("The length of the n_tested vector must be equal to the N vector.",
-                   "ie. you must describe both the number of animals tested in each",
-                   "group as well as how many animals are in each group.",
-                   sep = "\n"))
+        stop(paste("The length of the n_tested vector must be equal to the N",
+                   "vector. ie. you must describe both the number of animals",
+                   "tested in each group as well as how many animals are in",
+                   "each group.", sep = "\n"))
     }
 
     if (any(n_tested > N)) {
@@ -61,9 +61,10 @@ hse_finite <- function(id,
     }
 
     if (!(length(dp) == 1 || length(n_tested) == length(dp))) {
-        stop(paste("The length of the n_tested vector must be equal to the dp vector.",
-                   "ie. you must describe both the number of animals tested in each",
-                   "group as well as the dp in each group.", sep = "\n"))
+        stop(paste("The length of the n_tested vector must be equal to",
+                   "the dp vector. ie. you must describe both the number of",
+                   "animals tested in each group as well as the dp in",
+                   "each group.", sep = "\n"))
     }
 
     if (!(length(test_Se) == 1 || length(test_Se) == length(n_tested))) {
@@ -71,7 +72,8 @@ hse_finite <- function(id,
     }
 
     if (!(length(id) == length(n_tested))) {
-        stop("Argument id (grouping variable) should be the same length as n_tested")
+        stop(paste("Argument id (grouping variable) should be",
+                   "the same length as n_tested"))
     }
 
     A <- 1 - (n_tested * test_Se / N)
@@ -137,9 +139,10 @@ hse_infinite <- function(id,
                          dp) {
 
     if (!(length(n_tested) == length(dp) || length(dp) == 1)) {
-        stop(paste("The length of the n_tested vector must be equal to the dp vector.",
-                   "ie. you must describe both the number of animals tested in each",
-                   "group as well as the dp in each group."), sep = "\n")
+        stop(paste("The length of the n_tested vector must be",
+                   "equal to the dp vector. ie. you must describe",
+                   "both the number of animals tested in each group",
+                   "as well as the dp in each group.", sep = "\n"))
     }
 
     if (!(length(n_tested) == length(test_Se) || length(test_Se) == 1)) {
@@ -147,7 +150,8 @@ hse_infinite <- function(id,
     }
 
     if (!(length(id) == length(n_tested))) {
-        stop("Argument id (grouping variable) should be the same length as n_tested")
+        stop(paste("Argument id (grouping variable) should be the same",
+                   "length as n_tested"))
     }
 
     A <- 1 - (dp * test_Se)
@@ -277,11 +281,13 @@ hse <- function(id,
 ##'
 ##' Takes a vector of the sensitivity of herds tested in the
 ##' surveillance system and a vector of the effective probability of
-##' infection in the herds (EPIH) to calculate the total surveillance system
-##' sensitivity for the entire program.
+##' infection in the herds (EPIH) to calculate the total surveillance
+##' system sensitivity for the entire program.
 ##' @title sysse
-##' @param dp The vector of EPIH for all herds tested in the surveillance system
-##' @param hse The calculated hse for all the herds tested in the surveillance system
+##' @param dp The vector of EPIH for all herds tested in the
+##'     surveillance system
+##' @param hse The calculated hse for all the herds tested in the
+##'     surveillance system
 ##' @return A vector (length 1)
 ##' @export
 ##' @examples

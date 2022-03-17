@@ -21,20 +21,36 @@ stopifnot(nrow(ob) == 2L)
 
 ## can't test more than the population
 ob <- tools::assertError(hse_finite(1, 25, 10, 0.8, 0.1))[[1]]$message
-stopifnot(length(grep("One of the URG has more subunits tested than in the population", ob)) == 1)
+ex <- "One of the URG has more subunits tested than in the population"
+stopifnot(length(grep(ex, ob)) == 1)
 
 ## Vectors must be the same length
-ob <- tools::assertError(hse_finite(c(1, 2), c(25, 25), 10, 0.8, 0.1))[[1]]$message
-ex <- "The length of the n_tested vector must be equal to the N vector.\nie. you must describe both the number of animals tested in each\ngroup as well as how many animals are in each group."
+ob <- tools::assertError(hse_finite(c(1, 2),
+                                    c(25, 25), 10, 0.8, 0.1))[[1]]$message
+ex <- paste("The length of the n_tested vector must be equal to the N",
+            "vector.\nie. you must describe both the number of animals",
+            "tested in each\ngroup as well as how many animals are in",
+            "each group.")
 stopifnot(length(grep(ex, ob)) == 1L)
 
 ## Vectors must be the same length
-ob <- tools::assertError(hse_finite(c(1, 2), c(25, 25), c(50, 50), 0.8, dp = c(0.1, 0.2, 0.1)))[[1]]$message
-ex <- "The length of the n_tested vector must be equal to the dp vector.\nie. you must describe both the number of animals tested in each\ngroup as well as the dp in each group."
+ob <- tools::assertError(hse_finite(c(1, 2),
+                                    c(25, 25),
+                                    c(50, 50),
+                                    0.8,
+                                    dp = c(0.1, 0.2, 0.1)))[[1]]$message
+ex <- paste("The length of the n_tested vector must be equal to the",
+            "dp vector.\nie. you must describe both the number of",
+            "animals tested in each\ngroup as well as the dp in",
+            "each group.")
 stopifnot(length(grep(ex, ob)) == 1L)
 
 ## Vectors must be the same length
-ob <- tools::assertError(hse_finite(c(1, 2), c(25, 25), c(50, 50), test_Se = c(0.8, 0.7, 0.7), dp = c(0.1, 0.2)))[[1]]$message
+ob <- tools::assertError(hse_finite(c(1, 2),
+                                    c(25, 25),
+                                    c(50, 50),
+                                    test_Se = c(0.8, 0.7, 0.7),
+                                    dp = c(0.1, 0.2)))[[1]]$message
 ex <- "The length of test_Se must be either 1 or the length of n_tested"
 stopifnot(length(grep(ex, ob)) == 1L)
 
@@ -43,8 +59,12 @@ ob <- hse_finite(c(1, 2), c(10, 10), c(25, 25), 0.8, 0.1)
 stopifnot(nrow(ob) == 2L)
 
 ## Ensure the id column is the same length as n_tested
-ob <- tools::assertError(hse_finite(1, c(10, 10), c(25, 25), 0.8, 0.1))[[1]]$message
-ex <- "Argument id \\(grouping variable\\) should be the same length as n_tested"
+ob <- tools::assertError(hse_finite(1,
+                                    c(10, 10),
+                                    c(25, 25),
+                                    0.8, 0.1))[[1]]$message
+ex <- paste("Argument id \\(grouping variable\\) should be the",
+            "same length as n_tested")
 stopifnot(length(grep(ex, ob)) == 1L)
 
 
@@ -57,12 +77,14 @@ ob3 <- hse_finite(1, 1, 20, 1, 0.01, "ceiling")$HSe
 ob4 <- hse_finite(1, 1, 20, 1, 0.05)$HSe
 stopifnot(identical(ob1, ob2, ob3, ob4))
 
-## expect the floor method to be more conservative than the ceiling method
+## expect the floor method to be more conservative than the ceiling
+## method
 ob1 <- hse_finite(1, 1, 20, 1, 0.06, "ceiling")$HSe
 ob2 <- hse_finite(1, 1, 20, 1, 0.06, "floor")$HSe
 stopifnot(ob1 > ob2)
 
-## expect the 'none' method to be more conservative than round for small fractions
+## expect the 'none' method to be more conservative than round for
+## small fractions
 ob1 <- hse_finite(1, 1, 20, 1, 0.01, "round")$HSe
 ob2 <- hse_finite(1, 1, 20, 1, 0.01, "none")$HSe
 stopifnot(ob1 > ob2)

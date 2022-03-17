@@ -20,12 +20,14 @@ stopifnot(ob < 0.9)
 
 ob1 <- tools::assertError(prior_fr(0.1, -0.1))[[1]]$message
 ob2 <- tools::assertError(prior_fr(0.1, 1.1))[[1]]$message
-ex <- "The annual probability of introduction cannot be greater than 1 or less than 0"
+ex <- paste("The annual probability of introduction cannot",
+            "be greater than 1 or less than 0")
 stopifnot(length(grep(ex, ob1)) == 1L)
 stopifnot(length(grep(ex, ob2)) == 1L)
 
 ob1 <- tools::assertError(prior_fr(-0.1, 0.1))[[1]]$message
 ob2 <- tools::assertError(prior_fr(1.1, 0.1))[[1]]$message
-ex <- "The posterior probability of freedom cannot be greater than 1 or less than 0"
+ex <- paste("The posterior probability of freedom cannot",
+            "be greater than 1 or less than 0")
 stopifnot(length(grep(ex, ob1)) == 1L)
 stopifnot(length(grep(ex, ob2)) == 1L)
