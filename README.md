@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/SVA-SE/freedom.svg?branch=master)](https://travis-ci.org/SVA-SE/freedom)
+[![R-CMD-check](https://github.com/SVA-SE/freedom/workflows/R-CMD-check/badge.svg)](https://github.com/SVA-SE/freedom/actions)
+[![Codecov test coverage](https://codecov.io/gh/SVA-SE/freedom/branch/master/graph/badge.svg)](https://app.codecov.io/gh/SVA-SE/freedom?branch=master)
 [![CRAN status](https://www.r-pkg.org/badges/version/freedom)](https://CRAN.R-project.org/package=freedom)
 
 # freedom

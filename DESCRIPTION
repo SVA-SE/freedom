@@ -17,8 +17,9 @@ Type: Package
 LazyLoad: yes
 VignetteBuilder: knitr
 Suggests:
-        knitr,
-        rmarkdown
+    covr,
+    knitr,
+    rmarkdown
 Depends: R (>= 3.6)
 Encoding: UTF-8
 RoxygenNote: 7.1.1
