@@ -1,9 +1,11 @@
 Package: freedom
 Title: Demonstration of Disease Freedom (DDF)
-Version: 1.0.1
-Authors@R: person("Thomas", "Rosendal", role = c("aut", "cre"),
+Version: 1.1.0
+Authors@R: c(person("Thomas", "Rosendal", role = c("aut", "cre"),
                   email = "trosendal@gmail.com",
-                  comment = c(ORCID = "0000-0002-6576-9668"))
+                  comment = c(ORCID = "0000-0002-6576-9668")),
+             person("Petter", "Hopp", role = "ctb",
+                  comment = c(ORCID = "0000-0002-8695-0378")))
 Description: Implements the formulae required to calculate freedom
     from disease according to Cameron and Baldock (1998)
     <doi:10.1016/S0167-5877(97)00081-0>. These are the
