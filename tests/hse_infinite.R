@@ -13,7 +13,7 @@ ob3 <- hse_infinite(1, 20, 1, 0.01)$HSe
 stopifnot(ob3 < ob2)
 
 ## expect to get a data.frame with 2 rows
-ob <- hse_infinite(c(1,2), c(10, 10), c(1, 1), c(0.1, 0.1))
+ob <- hse_infinite(c(1, 2), c(10, 10), c(1, 1), c(0.1, 0.1))
 stopifnot(nrow(ob) == 2L)
 
 ## Vectors must be the same length

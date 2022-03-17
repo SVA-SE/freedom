@@ -247,7 +247,7 @@ hse <- function(id,
                              dp_finite)
         finite$method <- "finite"
     }
-    if(all(index_finite)) {
+    if (all(index_finite)) {
         return(finite)
     }
 

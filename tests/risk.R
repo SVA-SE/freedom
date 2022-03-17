@@ -9,7 +9,7 @@ stopifnot(any(abs(adjusted_risk(c(0.1, 0.9), c(1, 4)) - c(0.2702702703, 1.081081
 stopifnot(any(abs(EffProbInf(dp = 0.01, adjusted_risk(c(0.1, 0.9), c(1, 4))) - c(0.0027027027, 0.0108108108)) < tol))
 
 ## Herd Se
-temp <- EffProbInf(dp = 0.01, adjusted_risk(c(0.1, 0.9), c(1,4)))
+temp <- EffProbInf(dp = 0.01, adjusted_risk(c(0.1, 0.9), c(1, 4)))
 stopifnot(any(abs(hse_infinite(c(1, 1), c(5, 10), 0.9, temp)$HSe - 0.1041217047) < tol))
 stopifnot(any(abs(hse_finite(c(1, 1), c(5, 10), c(10, 15), 0.90, temp)$HSe - 0.1518904312) < tol))
 

@@ -7,10 +7,10 @@
 valid_proportions <- function(x, tolerance = 1e-7) {
     stopifnot(is.numeric(x))
 
-    if(any(x > 1 | x < 0)) {
+    if (any(x > 1 | x < 0)) {
         return(FALSE)
     }
-    if(any(abs(sum(x) - 1) > tolerance)) {
+    if (any(abs(sum(x) - 1) > tolerance)) {
         return(FALSE)
     }
     TRUE
@@ -61,40 +61,40 @@ sample_data <- function(nherds = 500,
                         animal_samp_dist = c(0.5, 0.5),
                         seed = NULL) {
 
-    if(length(herd_dist) != n_herd_urg) {
+    if (length(herd_dist) != n_herd_urg) {
         stop("The length of the herd distribution vector must be equal to the number of herd unit risk groups")
     }
 
-    if(length(herd_samp_dist) != n_herd_urg) {
+    if (length(herd_samp_dist) != n_herd_urg) {
         stop("The length of the herd sample distribution vector must be equal to the number of herd unit risk groups")
     }
 
-    if(length(animal_dist) != n_animal_urg) {
+    if (length(animal_dist) != n_animal_urg) {
         stop("The length of the animal distribution vector must be equal to the number of animal unit risk groups")
     }
 
-    if(length(animal_samp_dist) != n_animal_urg) {
+    if (length(animal_samp_dist) != n_animal_urg) {
         stop("The length of the animal sample distribution vector must be equal to the number of animal unit risk groups")
     }
 
-    if(!valid_proportions(herd_dist)) {
+    if (!valid_proportions(herd_dist)) {
         stop("The distribution of herds between the herd unit risk groups must be between 0 and 1 and must sum to 1")
     }
 
-    if(!valid_proportions(herd_samp_dist)) {
+    if (!valid_proportions(herd_samp_dist)) {
         stop("The distribution of herd SAMPLES between the herd unit risk groups must be between 0 and 1 and must sum to 1")
     }
 
 
-    if(!valid_proportions(animal_dist)){
+    if (!valid_proportions(animal_dist)) {
         stop("The distribution of animals between the animal unit risk groups must be between 0 and 1 and sum to 1")
     }
 
-    if(!valid_proportions(animal_samp_dist)) {
+    if (!valid_proportions(animal_samp_dist)) {
         stop("The distribution of animal SAMPLES between the animal unit risk groups must be between 0 and 1 and sum to 1")
     }
 
-    if(!is.null(seed)) {
+    if (!is.null(seed)) {
         set.seed(seed)
     }
 
@@ -108,8 +108,10 @@ sample_data <- function(nherds = 500,
     herds <- data.frame(ppn, N, n, herd_urg,
                         stringsAsFactors = FALSE)
     herds <- do.call("rbind", lapply(seq_len(n_herd_urg), function(x) {
-        df <- herds[herds$herd_urg == x,]
-        df$sample <- sample(c(0, 1), nrow(df), replace = TRUE, prob = c(1 - herd_samp_dist[x], herd_samp_dist[x]))
+        df <- herds[herds$herd_urg == x, ]
+        df$sample <- sample(c(0, 1), nrow(df),
+                            replace = TRUE,
+                            prob = c(1 - herd_samp_dist[x], herd_samp_dist[x]))
         return(df)
     }))
 
@@ -117,7 +119,7 @@ sample_data <- function(nherds = 500,
 
     herds <- do.call("rbind", lapply(ppn, function(x) {
 
-        df <- herds[ppn == x,]
+        df <- herds[ppn == x, ]
 
         N_animal_urg <- as.vector(table(sample(x = seq_len(n_animal_urg),
                                size = df$N,
@@ -134,8 +136,8 @@ sample_data <- function(nherds = 500,
             n_sample_animal_urg[index] <- N_animal_urg[index]
         }
 
-        for(i in seq_len(n_animal_urg - 1)) {
-            df <- rbind(df, herds[ppn == x,])
+        for (i in seq_len(n_animal_urg - 1)) {
+            df <- rbind(df, herds[ppn == x, ])
         }
 
         df$animal_urg <- seq_len(n_animal_urg)

@@ -23,5 +23,5 @@ ex <- "The length of the proportions vector must be equal to the length of the R
 stopifnot(length(grep(ex, ob)) == 1)
 
 ob <- adjusted_risk(c(0.5, 0.5), c(1, 2))
-ex <- c(2/3, 4/3)
+ex <- c(2 / 3, 4 / 3)
 stopifnot(all(abs(ob - ex) < tol))

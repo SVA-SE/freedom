@@ -26,8 +26,8 @@ df <- sample_data(nherds = 100,
 ##
 ## First calculate the Adjusted risks for each Herd unit risk group
 ##
-table(df$herd_urg)/nrow(df)
-AR <- adjusted_risk(as.numeric(table(df$herd_urg)/nrow(df)), c(1, 2.3))
+table(df$herd_urg) / nrow(df)
+AR <- adjusted_risk(as.numeric(table(df$herd_urg) / nrow(df)), c(1, 2.3))
 EPHI <- EffProbInf(0.02, AR)
 df$dp <- 0.15
 df$ephi <- EPHI[df$herd_urg]

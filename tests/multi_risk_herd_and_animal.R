@@ -27,18 +27,18 @@ df <- sample_data(nherds = 100,
 ## First calculate the Adjusted risks for each Herd unit risk group
 ##
 ##Since there are 2 rows for every herds the following is OK
-table(df$herd_urg)/nrow(df)
+table(df$herd_urg) / nrow(df)
 
 ## Now calculate the EPHI for each herdtype
-AR <- adjusted_risk(as.numeric(table(df$herd_urg)/nrow(df)), c(1, 2.3))
+AR <- adjusted_risk(as.numeric(table(df$herd_urg) / nrow(df)), c(1, 2.3))
 EPHI <- EffProbInf(0.02, AR)
 EPHI <- data.frame(ppn = sort(unique(df$ppn)),
                    EPHI = EPHI[df$herd_urg[match(sort(unique(df$ppn)), df$ppn)]])
 
 ## Now calculate the EPAI for each animal category in each herd
 df$epai <- unlist(
-lapply(unique(df$ppn), function(x){
-    df <- df[df$ppn == x,]
+lapply(unique(df$ppn), function(x) {
+    df <- df[df$ppn == x, ]
     prop <- df$N_animal_urg / sum(df$N_animal_urg)
     EffProbInf(0.15, adjusted_risk(prop, c(1, 3)))
 })
@@ -48,8 +48,8 @@ df$prop <- prop[match(df$ppn, names(prop))]
 
 ## Then use this in the Herd sensitivity Calculation
 ##
-df_finite <- df[df$prop > 0.1,]
-df_infinite <- df[df$prop <= 0.1,]
+df_finite <- df[df$prop > 0.1, ]
+df_infinite <- df[df$prop <= 0.1, ]
 hse1 <- hse_finite(df_finite$ppn,
                    df_finite$n_animal_urg,
                    df_finite$N_animal_urg,
@@ -91,18 +91,18 @@ df <- sample_data(nherds = 200,
 ##
 ## Now there are 5 herd level risk groups to use to calculate the HSe.
 ## The relative risks are
-## URG1 == 1
-## URG2 == 2.3
-## URG3 == 1.5
-## URG4 == 9
-## URG5 == 3
+## URG1 : 1
+## URG2 : 2.3
+## URG3 : 1.5
+## URG4 : 9
+## URG5 : 3
 ## Now there are 5 animal risk groups, the animal relative risks are:
 ## The relative risks are
-## URG1 == 1
-## URG2 == 3
-## URG3 == 1.5
-## URG4 == 2
-## URG5 == 4
+## URG1 : 1
+## URG2 : 3
+## URG3 : 1.5
+## URG4 : 2
+## URG5 : 4
 ##
 ## The Design prevalence for the calculation below is 2% at the
 ## herd level and 15% at the animal level. The sensitivity of the test
@@ -112,7 +112,7 @@ df <- sample_data(nherds = 200,
 ## First calculate the Adjusted risks for each Herd unit risk group
 ##
 ##Since there are 2 rows for every herds the following is OK
-table(df$herd_urg)/nrow(df)
+table(df$herd_urg) / nrow(df)
 
 ## Now calculate the EPHI for each herdtype
 AR <- adjusted_risk(as.numeric(table(df$herd_urg)/nrow(df)), c(1, 2.3, 1.5, 9, 3))
@@ -122,8 +122,8 @@ EPHI <- data.frame(ppn = sort(unique(df$ppn)),
 
 ## Now calculate the EPAI for each animal category in each herd
 df$epai <- unlist(
-lapply(unique(df$ppn), function(x){
-    df <- df[df$ppn == x,]
+lapply(unique(df$ppn), function(x) {
+    df <- df[df$ppn == x, ]
     prop <- df$N_animal_urg / sum(df$N_animal_urg)
     EffProbInf(0.15, adjusted_risk(prop, c(1, 3, 1.5, 2, 4)))
 })
@@ -133,8 +133,8 @@ df$prop <- prop[match(df$ppn, names(prop))]
 
 ## Then use this in the Herd sensitivity Calculation
 ##
-df_finite <- df[df$prop > 0.1,]
-df_infinite <- df[df$prop <= 0.1,]
+df_finite <- df[df$prop > 0.1, ]
+df_infinite <- df[df$prop <= 0.1, ]
 hse1 <- hse_finite(df_finite$ppn, df_finite$n_animal_urg, df_finite$N_animal_urg, 0.7, df_finite$epai)
 hse2 <- hse_infinite(df_infinite$ppn, df_infinite$n_animal_urg, 0.7, df_infinite$epai)
 HSE <- rbind(hse1, hse2)

@@ -53,7 +53,7 @@ adjusted_risk <- function(prop, RR) {
     }
 
     unlist(
-        lapply(seq_len(length(prop)), function(x){
+        lapply(seq_len(length(prop)), function(x) {
             RR[x] / sum(RR * prop)
         })
     )
@@ -103,7 +103,7 @@ EffProbInf <- function(dp, AR) {
 
     epi <- dp * AR
 
-    if (any(epi >= 1)){
+    if (any(epi >= 1)) {
         warning(paste(c("The EPI should not be greater than 1 for any URG. ",
                         "Consider your choices of design prevalence and the",
                         "relative risks of the URG"), sep = "\n"))

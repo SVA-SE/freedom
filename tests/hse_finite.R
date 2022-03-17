@@ -16,7 +16,7 @@ ob <- hse_finite(1, 20, 20, 0.8, 0.01)$HSe
 stopifnot(ob < 1)
 
 ## expect to get a data.frame with 2 rows
-ob <- hse_finite(c(1,2), c(10, 10), c(20, 20), c(1, 1), c(0.1, 0.1))
+ob <- hse_finite(c(1, 2), c(10, 10), c(20, 20), c(1, 1), c(0.1, 0.1))
 stopifnot(nrow(ob) == 2L)
 
 ## can't test more than the population
