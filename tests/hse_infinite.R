@@ -21,6 +21,11 @@ ob <- tools::assertError(hse_infinite(c(1, 2), c(10, 10), 0.8, c(0.1, 0.2, 0.1))
 ex <- "The length of the n_tested vector must be equal to the dp vector. ie. you must describe both the number of animals tested in each group as well as the dp in each group.\n"
 stopifnot(length(grep(ex, ob)) == 1L)
 
+## Vectors must be the same length
+ob <- tools::assertError(hse_infinite(c(1, 2), c(10, 10), c(0.8, 0.7, 0.8), c(0.1, 0.2)))[[1]]$message
+ex <- "Length of test_Se must be 1 or the length of n_tested"
+stopifnot(length(grep(ex, ob)) == 1L)
+
 ## Allow for a single Se value for more groups
 ob <- hse_infinite(c(1, 2), c(10, 10), 0.8, 0.1)
 stopifnot(nrow(ob) == 2L)

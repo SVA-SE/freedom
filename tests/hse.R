@@ -23,3 +23,32 @@ stopifnot(abs(ob - 1) < tol)
 
 ## and allow the same with force
 hse(1, 100, 90, 0.9, dp = 0.1, force = TRUE)
+
+## finite with multiple dps an Se
+ob <- nrow(hse(c(1, 2, 3),
+               c(10, 10, 10),
+               c(20, 20, 20),
+               c(0.8, 0.7, 0.8),
+               c(0.1))) == 3L
+stopifnot(ob)
+
+ob <- nrow(hse(c(1, 2, 3),
+               c(10, 10, 10),
+               c(20, 20, 20),
+               c(0.8),
+               c(0.1, 0.4, 0.3))) == 3L
+stopifnot(ob)
+
+ob <- nrow(hse(c(1, 2, 3),
+               c(2, 2, 2),
+               c(50, 50, 50),
+               c(0.8, 0.7, 0.8),
+               c(0.1))) == 3L
+stopifnot(ob)
+
+ob <- nrow(hse(c(1, 2, 3),
+               c(2, 2, 2),
+               c(50, 50, 50),
+               c(0.8),
+               c(0.1, 0.4, 0.3))) == 3L
+stopifnot(ob)

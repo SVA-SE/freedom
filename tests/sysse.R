@@ -20,3 +20,7 @@ ob2 <- tools::assertError(sysse(1, -0.1))[[1]]$message
 ex <- "At least one of the hse values is greater than 1 or less than 0"
 stopifnot(length(grep(ex, ob1)) == 1L)
 stopifnot(length(grep(ex, ob2)) == 1L)
+
+ob <- tools::assertError(sysse(c(1.2, 1), c(0.8, 0.9)))[[1]]$message
+ex <- "At least one effective probability of infection \\(dp\\) is greater than 1 or less than 0"
+stopifnot(length(grep(ex, ob)) == 1L)
