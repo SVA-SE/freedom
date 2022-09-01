@@ -190,6 +190,14 @@ hse_infinite <- function(id,
 ##'     that if > 10% of animals are tested in a herd the finite
 ##'     population will be assumed; less than or equal to 10%, the
 ##'     infinite population will be assumed.
+##' @param rounding How should the proportion of animals be rounded?
+##'     Default value is 'none' which does no rounding. Other options
+##'     are 'round', 'ceiling', and 'floor'. 'round' rounds the dp * N
+##'     to the nearest integer and then selects 1 if the value is
+##'     0. 'ceiling' takes the ceiling of dp * N, this is consistent
+##'     with the method in the Rsurveillance package. 'floor' takes
+##'     the floor of dp * N and makes it 1 if the result is 0.
+##' @return A data.frame. A dataframe is returned with 2 columns: "id"
 ##' @param force If force = FALSE (default) then the function errors
 ##'     if n>N. If force = TRUE then this is allowed and uses the
 ##'     hse_infinite to calculate HSe.
@@ -217,6 +225,7 @@ hse <- function(id,
                 test_Se,
                 dp,
                 threshold = 0.1,
+                rounding = c("none", "ceiling", "round", "floor"),
                 force = FALSE) {
 
     ## Ratio of animals tested in the herds
@@ -248,7 +257,8 @@ hse <- function(id,
                              n_tested[index_finite],
                              N[index_finite],
                              test_Se_finite,
-                             dp_finite)
+                             dp_finite,
+                             rounding = rounding)
         finite$method <- "finite"
     }
     if (all(index_finite)) {
