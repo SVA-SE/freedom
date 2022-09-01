@@ -21,3 +21,8 @@ stopifnot(length(ob) == 10L)
 ## acheck where mu != x.mode
 ob <- rpert(10, 2, 4, 3.5, 4)
 stopifnot(length(ob) == 10L)
+
+## Another check that failed prior to the fix with floating point
+## equivalence
+ob <- rpert(10, 0.7, 0.9, 0.8)
+stopifnot(all(is.finite(ob)))
