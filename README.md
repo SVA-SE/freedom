@@ -17,7 +17,7 @@ trade relationships as well as trade restrictions to avoid future
 introductions.
 
 These calculations have been successfully done in @risk software which
-is add-on toolset to the Microsoft Excel spreadsheet programme. In
+is an add-on toolset to the Microsoft Excel spreadsheet programme. In
 order to make these calculations more reproducible and based on openly
 available tools that are tailored to our needs, this package has been
 produced in R. The vision is ultimately to have an adaptable tool that
