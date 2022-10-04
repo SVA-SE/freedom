@@ -48,4 +48,3 @@ clean:
 	-rm -rf src-i386
 
 .PHONY: install roxygen pdf check clean
-s
