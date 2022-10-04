@@ -41,7 +41,6 @@ check_full: clean
 	cd .. && R CMD build $(PKG_NAME)
 	cd .. && R CMD check --as-cran $(PKG_TAR)
 
-
 clean:
 	-rm -f src/*.o
 	-rm -f src/*.so
@@ -49,3 +48,4 @@ clean:
 	-rm -rf src-i386
 
 .PHONY: install roxygen pdf check clean
+s
