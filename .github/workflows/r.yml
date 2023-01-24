@@ -1,0 +1,22 @@
+name: R-CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  R-CI:
+    runs-on: ubuntu-latest
+    container: fedora:latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install dependancies
+        run: |
+          sudo dnf --assumeyes install git ansible
+          git clone https://github.com/stewid/ansible-r-ci.git ../ansible-r-ci
+          git --git-dir=../ansible-r-ci/.git --work-tree=../ansible-r-ci/ checkout main
+
+      - name: Check package
+        run: ansible-playbook -i localhost, --extra-vars "r_ci_covr=codecov" ../ansible-r-ci/r-ci.yml

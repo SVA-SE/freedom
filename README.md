@@ -1,5 +1,6 @@
-[![R-CMD-check](https://github.com/SVA-SE/freedom/workflows/R-CMD-check/badge.svg)](https://github.com/SVA-SE/freedom/actions)
+[![Build Status](https://github.com/SVA-SE/freedom/actions/workflows/r.yml/badge.svg)](https://github.com/SVA-SE/freedom/actions/workflows/r.yml)
 [![CRAN status](https://www.r-pkg.org/badges/version/freedom)](https://CRAN.R-project.org/package=freedom)
+[![Code coverage](https://codecov.io/gh/SVA-SE/freedom/branch/main/graph/badge.svg)](https://app.codecov.io/gh/SVA-SE/freedom)
 
 # freedom
 
