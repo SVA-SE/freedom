@@ -232,7 +232,7 @@ hse <- function(id,
     ratio <- n_tested / N
 
     ## Check if this is more than expected
-    if (any(ratio > 1) & !force) {
+    if (any(ratio > 1) && !force) {
         problem <- id[ratio > 1]
         stop(paste("Greater than 100% of animals cannot be tested.",
                    "This occurs in the following ids:",
