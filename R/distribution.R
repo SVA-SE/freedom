@@ -37,8 +37,7 @@ rpert <- function(n,
     ## special case if mu == mode
     if (abs(mu - x.mode) < 1e-7) {
         v <- (lambda / 2) + 1
-    }
-    else {
+    } else {
         v <- ((mu - x.min) * (2 * x.mode - x.min - x.max)) /
             ((x.mode - mu) * (x.max - x.min))
     }
