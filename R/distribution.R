@@ -8,7 +8,6 @@
 ##' @param x.max The maximum value in the sample
 ##' @param x.mode The mode of the sample
 ##' @param lambda lambda
-##' @importFrom stats rbeta
 ##' @return a numeric vector of length n
 ##' @export
 ##' @examples
@@ -43,5 +42,5 @@ rpert <- function(n,
     }
 
     w <- (v * (x.max - mu)) / (mu - x.min)
-    rbeta(n, v, w) * x.range + x.min
+    stats::rbeta(n, v, w) * x.range + x.min
 }

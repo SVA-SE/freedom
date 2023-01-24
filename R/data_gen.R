@@ -38,7 +38,6 @@ valid_proportions <- function(x, tolerance = 1e-7) {
 ##' @param seed The seed for the random number generator. Default is a
 ##'     random seed
 ##' @return A data.frame
-##' @importFrom stats rpois
 ##' @export
 ##' @examples
 ##' ## Generate the default example data. This will generate a
@@ -107,8 +106,8 @@ sample_data <- function(nherds = 500,
     }
 
     ppn <- 1:nherds
-    N <- rpois(nherds, mean_herd_size)
-    n <- floor((rpois(nherds, animal_samp_frac * 100) / 100) * N)
+    N <- stats::rpois(nherds, mean_herd_size)
+    n <- floor((stats::rpois(nherds, animal_samp_frac * 100) / 100) * N)
     herd_urg <- sample(x = factor(seq_len(n_herd_urg)),
                        size = nherds,
                        replace = TRUE,
