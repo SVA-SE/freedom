@@ -38,7 +38,7 @@ valid_proportions <- function(x, tolerance = 1e-7) {
 ##' @param seed The seed for the random number generator. Default is a
 ##'     random seed
 ##' @return A data.frame
-##' @import stats
+##' @importFrom stats rpois
 ##' @export
 ##' @examples
 ##' ## Generate the default example data. This will generate a

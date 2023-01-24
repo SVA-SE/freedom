@@ -24,4 +24,4 @@ Suggests:
     rmarkdown
 Depends: R (>= 3.6)
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
