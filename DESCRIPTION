@@ -25,3 +25,10 @@ Suggests:
 Depends: R (>= 3.6)
 Encoding: UTF-8
 RoxygenNote: 7.2.3
+Collate:
+    'freedom-package.R'
+    'data_gen.R'
+    'distribution.R'
+    'herd_se.R'
+    'risk.R'
+    'temporal_discounting.R'
