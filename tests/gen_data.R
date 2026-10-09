@@ -19,7 +19,7 @@ df1_expected <- data.frame(
                            1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
                            1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
                            1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
-                           2L), .Label = c("1", "2"),
+                           2L), levels = c("1", "2"),
                          class = "factor"),
     animal_urg = c(1L, 2L, 1L, 2L, 1L, 2L, 1L, 2L, 1L, 2L, 1L, 2L, 1L,
                    2L, 1L, 2L, 1L, 2L, 1L, 2L, 1L, 2L, 1L, 2L, 1L, 2L,
@@ -68,7 +68,7 @@ stopifnot(identical(df1_observed, df1_expected))
 df2_expected <- data.frame(
     ppn = c(2L, 3L, 4L, 6L, 8L, 10L, 1L, 5L, 7L, 9L),
     herd_urg = structure(c(1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L),
-                         .Label = c("1", "2"),
+                         levels = c("1", "2"),
                          class = "factor"),
     animal_urg = c(1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L),
     N_animal_urg =
@@ -97,7 +97,7 @@ df3_expected <- data.frame(
                            3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
                            3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
                            3L, 3L, 3L, 4L, 4L, 4L, 4L),
-                         .Label = c("1", "2", "3", "4"),
+                         levels = c("1", "2", "3", "4"),
                          class = "factor"),
     animal_urg = c(1L, 2L, 3L, 4L, 1L, 2L, 3L, 4L, 1L, 2L, 3L, 4L, 1L,
                    2L, 3L, 4L, 1L, 2L, 3L, 4L, 1L, 2L, 3L, 4L, 1L, 2L,
