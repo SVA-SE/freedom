@@ -20,7 +20,7 @@ problem <- 1
 ex <- paste("Greater than 100% of animals cannot be tested.",
             "This occurs in the following ids:",
             paste(problem, collapse = ", "),
-            "To ignore this an default to infinite population",
+            "To ignore this and default to infinite population",
             "for these herds, set force = TRUE", sep = "\n")
 ob <- length(grep(ex, res[[1]]$message)) == 1L
 stopifnot(ob)
