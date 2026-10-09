@@ -1,3 +1,9 @@
+# freedom 1.1.1 (2026-10-09)
+
+## CHANGES
+
+* Just a small typo in an warning message
+
 # freedom 1.1.0 (2022-03-17)
 
 ## CHANGES
