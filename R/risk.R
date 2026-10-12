@@ -38,17 +38,17 @@ adjusted_risk <- function(prop, RR) {
 
     if (length(RR) < 2) {
         stop(paste("We expect at least 2 unit risk groups (URG). ie the",
-             "length of the vector arguments should be > 1"))
+                   "length of the vector arguments should be > 1"))
     }
 
     if (length(prop) != length(RR)) {
         stop(paste("The length of the proportions vector must be equal",
-             "to the length of the RR vector"))
+                   "to the length of the RR vector"))
     }
 
     if (RR[1] != 1) {
         stop(paste("The relative risk of the first URG must be 1.",
-             "This is the referent group"))
+                   "This is the referent group"))
     }
 
     if (!valid_proportions(prop)) {
@@ -57,7 +57,7 @@ adjusted_risk <- function(prop, RR) {
     }
 
     unlist(
-        lapply(seq_len(length(prop)), function(x) {
+        lapply(seq_along(prop), function(x) {
             RR[x] / sum(RR * prop)
         })
     )
@@ -103,7 +103,7 @@ EffProbInf <- function(dp, AR) {
 
     if (!(length(dp) == 1 || length(dp) == length(AR))) {
         stop(paste("The design prevalence (dp) vector must be length 1",
-             "or be equal in length to the AR vector"))
+                   "or be equal in length to the AR vector"))
     }
 
     epi <- dp * AR

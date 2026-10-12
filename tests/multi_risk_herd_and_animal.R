@@ -5,16 +5,16 @@ tol <- 1e-7
 
 ## 100 herds,
 df <- sample_data(nherds = 100,
-                 mean_herd_size = 300,
-                 n_herd_urg = 2,
-                 herd_dist = c(0.9, 0.1),
-                 herd_samp_frac = 0.01,
-                 herd_samp_dist = c(0.3, 0.7),
-                 n_animal_urg = 2,
-                 animal_dist = c(0.6, 0.4),
-                 animal_samp_frac = 0.1,
-                 animal_samp_dist = c(0.3, 0.7),
-                 seed = 1)
+                  mean_herd_size = 300,
+                  n_herd_urg = 2,
+                  herd_dist = c(0.9, 0.1),
+                  herd_samp_frac = 0.01,
+                  herd_samp_dist = c(0.3, 0.7),
+                  n_animal_urg = 2,
+                  animal_dist = c(0.6, 0.4),
+                  animal_samp_frac = 0.1,
+                  animal_samp_dist = c(0.3, 0.7),
+                  seed = 1)
 
 ## Now there are 2 herd level risk groups to use to calculate the HSe.
 ## The relative risk for Herd URG1 == 1 and URG2_relative_risk == 2.3
@@ -38,11 +38,11 @@ EPHI <- data.frame(ppn = sort(unique(df$ppn)),
 
 ## Now calculate the EPAI for each animal category in each herd
 df$epai <- unlist(
-lapply(unique(df$ppn), function(x) {
-    df <- df[df$ppn == x, ]
-    prop <- df$N_animal_urg / sum(df$N_animal_urg)
-    EffProbInf(0.15, adjusted_risk(prop, c(1, 3)))
-})
+    lapply(unique(df$ppn), function(x) {
+        df <- df[df$ppn == x, ]
+        prop <- df$N_animal_urg / sum(df$N_animal_urg)
+        EffProbInf(0.15, adjusted_risk(prop, c(1, 3)))
+    })
 )
 prop <- tapply(df$n_animal_urg, df$ppn, "sum") /
     tapply(df$N_animal_urg, df$ppn, "sum")
@@ -80,16 +80,16 @@ rm(list = ls()[ls() != "tol"])
 
 ## 100 herds
 df <- sample_data(nherds = 200,
-                 mean_herd_size = 300,
-                 n_herd_urg = 5,
-                 herd_dist = c(0.4, 0.2, 0.2, 0.1, 0.1),
-                 herd_samp_frac = 0.1,
-                 herd_samp_dist = c(0.2, 0.3, 0.3, 0.1, 0.1),
-                 n_animal_urg = 5,
-                 animal_dist = c(0.5, 0.2, 0.1, 0.1, 0.1),
-                 animal_samp_frac = 0.1,
-                 animal_samp_dist = c(0.1, 0.3, 0.3, 0.1, 0.2),
-                 seed = 1)
+                  mean_herd_size = 300,
+                  n_herd_urg = 5,
+                  herd_dist = c(0.4, 0.2, 0.2, 0.1, 0.1),
+                  herd_samp_frac = 0.1,
+                  herd_samp_dist = c(0.2, 0.3, 0.3, 0.1, 0.1),
+                  n_animal_urg = 5,
+                  animal_dist = c(0.5, 0.2, 0.1, 0.1, 0.1),
+                  animal_samp_frac = 0.1,
+                  animal_samp_dist = c(0.1, 0.3, 0.3, 0.1, 0.2),
+                  seed = 1)
 ##
 ## Now there are 5 herd level risk groups to use to calculate the HSe.
 ## The relative risks are
@@ -126,11 +126,11 @@ EPHI <- data.frame(ppn = sort(unique(df$ppn)),
 
 ## Now calculate the EPAI for each animal category in each herd
 df$epai <- unlist(
-lapply(unique(df$ppn), function(x) {
-    df <- df[df$ppn == x, ]
-    prop <- df$N_animal_urg / sum(df$N_animal_urg)
-    EffProbInf(0.15, adjusted_risk(prop, c(1, 3, 1.5, 2, 4)))
-})
+    lapply(unique(df$ppn), function(x) {
+        df <- df[df$ppn == x, ]
+        prop <- df$N_animal_urg / sum(df$N_animal_urg)
+        EffProbInf(0.15, adjusted_risk(prop, c(1, 3, 1.5, 2, 4)))
+    })
 )
 prop <- tapply(df$n_animal_urg, df$ppn, "sum") /
     tapply(df$N_animal_urg, df$ppn, "sum")

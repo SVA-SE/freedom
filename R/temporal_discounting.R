@@ -22,7 +22,7 @@ post_fr <- function(prior_fr, Se) {
 
     if (any(prior_fr > 1 | prior_fr < 0)) {
         stop(paste("The prior probability of freedom cannot be",
-             "greater than 1 or less than 0"))
+                   "greater than 1 or less than 0"))
     }
 
     if (any(Se > 1 | Se < 0)) {

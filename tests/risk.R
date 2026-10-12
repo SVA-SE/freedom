@@ -5,10 +5,10 @@ tol <- 1e-7
 
 ## Adjusted risks
 stopifnot(any(abs(adjusted_risk(c(0.1, 0.9), c(1, 4)) -
-                  c(0.2702702703, 1.0810810811)) < tol))
+                      c(0.2702702703, 1.0810810811)) < tol))
 ## Effective probability of infection
 stopifnot(any(abs(EffProbInf(dp = 0.01, adjusted_risk(c(0.1, 0.9), c(1, 4))) -
-                  c(0.0027027027, 0.0108108108)) < tol))
+                      c(0.0027027027, 0.0108108108)) < tol))
 
 ## Herd Se
 temp <- EffProbInf(dp = 0.01, adjusted_risk(c(0.1, 0.9), c(1, 4)))
@@ -26,7 +26,7 @@ stopifnot(any(abs(hse_finite(c(1, 1),
 
 stopifnot(any(abs(sysse(dp = c(0.1, 0.2, 0.01, 0.005, 0.01),
                         hse = c(0.9, 0.5, 0.02, 0.99, 0.8)) -
-                  0.1917353029) < tol))
+                      0.1917353029) < tol))
 
 ## Temporal discounting
 ## Assuming the annual surveillance system sensitivity is 99%
@@ -38,4 +38,4 @@ year2post <- post_fr(year2prior, Se)
 
 ## Nest these to just calculate the next year (year 3) posterior
 stopifnot(any(abs(post_fr(prior_fr(year2post, intro), Se) -
-                  0.9260259179) < tol))
+                      0.9260259179) < tol))

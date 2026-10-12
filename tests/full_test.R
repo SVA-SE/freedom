@@ -4,16 +4,16 @@ tol <- 1e-7
 
 ## 50 herds sample data
 df <- sample_data(nherds = 50,
-                 mean_herd_size = 500,
-                 n_herd_urg = 1,
-                 herd_dist = c(1),
-                 herd_samp_frac = 0.15,
-                 herd_samp_dist = c(1),
-                 n_animal_urg = 1,
-                 animal_dist = c(1),
-                 animal_samp_frac = 0.15,
-                 animal_samp_dist = c(1),
-                 seed = 1)
+                  mean_herd_size = 500,
+                  n_herd_urg = 1,
+                  herd_dist = c(1),
+                  herd_samp_frac = 0.15,
+                  herd_samp_dist = c(1),
+                  n_animal_urg = 1,
+                  animal_dist = c(1),
+                  animal_samp_frac = 0.15,
+                  animal_samp_dist = c(1),
+                  seed = 1)
 
 ## Because there is only 1 unit risk group at the herd and animal
 ## level the Adjusted risks are 1 and the effective probability of

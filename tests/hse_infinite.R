@@ -22,9 +22,9 @@ ob <- tools::assertError(hse_infinite(c(1, 2),
                                       0.8,
                                       c(0.1, 0.2, 0.1)))[[1]]$message
 ex <- paste("The length of the n_tested vector must be",
-                   "equal to the dp vector. ie. you must describe",
-                   "both the number of animals tested in each group",
-                   "as well as the dp in each group.", sep = "\n")
+            "equal to the dp vector. ie. you must describe",
+            "both the number of animals tested in each group",
+            "as well as the dp in each group.", sep = "\n")
 stopifnot(length(grep(ex, ob)) == 1L)
 
 ## Vectors must be the same length

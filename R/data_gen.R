@@ -119,7 +119,7 @@ sample_data <- function(nherds = 500,
         df$sample <- sample(c(0, 1), nrow(df),
                             replace = TRUE,
                             prob = c(1 - herd_samp_dist[x], herd_samp_dist[x]))
-        return(df)
+        df
     }))
 
     herds$n <- herds$n * herds$sample
@@ -129,9 +129,9 @@ sample_data <- function(nherds = 500,
         df <- herds[ppn == x, ]
 
         N_animal_urg <- as.vector(table(sample(x = seq_len(n_animal_urg),
-                               size = df$N,
-                               replace = TRUE,
-                               prob = animal_dist)))
+                                               size = df$N,
+                                               replace = TRUE,
+                                               prob = animal_dist)))
 
         n_sample_animal_urg <- as.vector(table(factor(sample(
                 x = seq_len(n_animal_urg),

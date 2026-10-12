@@ -5,16 +5,16 @@ tol <- 1e-7
 
 ## 100 herds,
 df <- sample_data(nherds = 100,
-                 mean_herd_size = 300,
-                 n_herd_urg = 2,
-                 herd_dist = c(0.9, 0.1),
-                 herd_samp_frac = 0.01,
-                 herd_samp_dist = c(0.3, 0.7),
-                 n_animal_urg = 1,
-                 animal_dist = c(1),
-                 animal_samp_frac = 0.05,
-                 animal_samp_dist = c(1),
-                 seed = 1)
+                  mean_herd_size = 300,
+                  n_herd_urg = 2,
+                  herd_dist = c(0.9, 0.1),
+                  herd_samp_frac = 0.01,
+                  herd_samp_dist = c(0.3, 0.7),
+                  n_animal_urg = 1,
+                  animal_dist = c(1),
+                  animal_samp_frac = 0.05,
+                  animal_samp_dist = c(1),
+                  seed = 1)
 ##
 ## Now there are 2 herd level risk groups to use to calculate the HSe.
 ## The relative risk for Herd URG1 == 1 and URG2_relative_risk == 2.3

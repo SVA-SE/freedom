@@ -378,8 +378,8 @@ sysse_finite <- function(dp, hse, N) {
 
     if (length(hse) != length(dp)) {
         stop(paste("The herd Se vector (hse) must be the same length",
-             "as the Effective probability of infection of the herd (dp)",
-             sep = "\n"))
+                   "as the Effective probability of infection of the herd (dp)",
+                   sep = "\n"))
     }
     if (any(hse > 1 | hse < 0)) {
         stop("At least one of the hse values is greater than 1 or less than 0")
