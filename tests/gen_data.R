@@ -1,5 +1,5 @@
 library(freedom)
-
+# nolint start: indentation_linter.
 df1_expected <- data.frame(
     ppn = c(1L, 1L, 2L, 2L, 3L, 3L, 4L, 4L, 5L, 5L, 6L, 6L, 8L, 8L,
             9L, 9L, 10L, 10L, 11L, 11L, 12L, 12L, 13L, 13L, 15L, 15L,
@@ -50,7 +50,7 @@ df1_expected <- data.frame(
                      0L, 0L, 54L, 9L, 0L, 0L, 41L, 6L, 0L, 0L, 0L, 0L,
                      0L, 0L, 0L, 0L, 53L, 10L, 58L, 12L, 51L, 5L, 58L,
                      2L, 39L, 10L, 37L, 2L))
-
+# nolint end: indentation_linter.
 df1_observed <- sample_data(nherds = 50,
                             mean_herd_size = 500,
                             n_herd_urg = 2,
@@ -64,7 +64,7 @@ df1_observed <- sample_data(nherds = 50,
                             seed = 1)
 
 stopifnot(identical(df1_observed, df1_expected))
-
+# nolint start: indentation_linter.
 df2_expected <- data.frame(
     ppn = c(2L, 3L, 4L, 6L, 8L, 10L, 1L, 5L, 7L, 9L),
     herd_urg = structure(c(1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L),
@@ -74,7 +74,7 @@ df2_expected <- data.frame(
     N_animal_urg =
         c(478L, 474L, 502L, 494L, 509L, 491L, 479L, 484L, 483L, 521L),
     n_animal_urg = c(0L, 0L, 0L, 0L, 0L, 0L, 62L, 87L, 111L, 93L))
-
+# nolint end: indentation_linter.
 df2_observed <- sample_data(nherds = 10,
                             mean_herd_size = 500,
                             n_herd_urg = 2,
@@ -88,7 +88,7 @@ df2_observed <- sample_data(nherds = 10,
                             seed = 2)
 
 stopifnot(identical(df2_observed, df2_expected))
-
+# nolint start: indentation_linter.
 df3_expected <- data.frame(
     ppn = c(3L, 3L, 3L, 3L, 4L, 4L, 4L, 4L, 1L, 1L, 1L, 1L, 2L, 2L,
             2L, 2L, 5L, 5L, 5L, 5L, 7L, 7L, 7L, 7L, 8L, 8L, 8L, 8L,
@@ -112,7 +112,7 @@ df3_expected <- data.frame(
                      0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L,
                      0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L,
                      0L, 0L, 0L, 0L))
-
+# nolint end: indentation_linter.
 df3_observed <- sample_data(nherds = 10,
                             mean_herd_size = 500,
                             n_herd_urg = 4,
