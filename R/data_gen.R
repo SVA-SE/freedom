@@ -133,12 +133,16 @@ sample_data <- function(nherds = 500,
                                                replace = TRUE,
                                                prob = animal_dist)))
 
-        n_sample_animal_urg <- as.vector(table(factor(sample(
-                x = seq_len(n_animal_urg),
-                size = df$n,
-                replace = TRUE,
-                prob = animal_samp_dist),
-            levels = seq_len(n_animal_urg))))
+        sampled_animal_urg <- sample(
+            x = seq_len(n_animal_urg),
+            size = df$n,
+            replace = TRUE,
+            prob = animal_samp_dist
+        )
+        n_sample_animal_urg <- as.vector(table(factor(
+            sampled_animal_urg,
+            levels = seq_len(n_animal_urg)
+        )))
 
         index <- n_sample_animal_urg > N_animal_urg
         if (any(index)) {
